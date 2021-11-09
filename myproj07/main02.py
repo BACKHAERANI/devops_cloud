@@ -11,14 +11,15 @@ df = pd.read_csv("https://bit.ly/3nsLDXy")
 song_list = list(df.T.to_dict().values())
 
 
-# 좋아요 수로 먼저 top10 곡명리스트를 만들어 봅시다.
+def pick_word_count_for_title(song_dict):
+    title: str = song_dict["title"]
+    word_list = title.split()
+    return len(word_list)
 
 
-def pick_like_value(song_dict):
-    return song_dict["like"]
+sorted_song_list = sorted(song_list, key=pick_word_count_for_title, reverse=True)
 
 
-sorted_song_list = sorted(song_list, key=pick_like_value, reverse=True)
 # top_list = sorted_song_list[:10]
 # for song_dict in top_list:
 # print("{like} {title}".format(**song_dict))
