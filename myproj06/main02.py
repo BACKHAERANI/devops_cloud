@@ -59,9 +59,6 @@ song_list = list(df.T.to_dict().values())
 #     print(title, length)
 
 
-# 문제 -artist 글자수 3이상 곡에 대한 좋아요수*제목글자수 하기
-
-
 # def get_artist_and_length_for_song(song_dict):
 #     artist: str = song_dict["artist"]
 #     return artist, len(artist)
@@ -71,18 +68,7 @@ song_list = list(df.T.to_dict().values())
 #     print (artist, length)
 
 
-def check_3_for_artist(song_dict):
-    return len(song_dict["artist"]) >= 3
-
-
-for song_dict in song_list:
-    if check_3_for_artist(song_dict):
-        print(song_dict["title"])
-
-
 """
-
 멜론TOP100 리스트에서 "곡명" 단어수로 TOP10 곡명 출력
 단어수가 제일 큰 노래가 우선순위가 가장 높겠죠.
-
 """
