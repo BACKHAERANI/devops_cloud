@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<hean>
+    <title>웹 문서 만들기</title>
+    <!---comment--->
+    <style>
+        /**/
+        #top_nav li {
+            display: inline-block;
+        }
+
+        #top_nav li a {
+            color: darkorchid;
+            text-decoration: none;
+        }
+
+        #top_nav li a:hover {
+            font-weight: bold;
+        }
+
+        body {
+            background-color: plum;
+        }
+
+        h1 {
+            font-weight: bold;
+            color: purple;
+            border-bottom: 3px dashed rebeccapurple;
+        }
+
+        h1:hover {
+            color: yellow;
+            cursor: darkorchid;
+        }
+
+        h2 {
+            color: darkslateblue;
+        }
+    </style>
+</hean>
+
+<body>
+    <nav>
+        <ul id="top_nav">
+            <li>
+                <a href="/">처음으로</a>
+            </li>
+            <li>
+                <a href="/profile">프로필</a>
+            </li>
+            <li>
+                <a href="/posts">블로그</a>
+            </li>
+            <li>
+                <a href="https://github.com/BACKHAERANI">깃허브</a>
+            </li>
+        </ul>
+    </nav>
+    <div>
+        <img src="/static/tree.jpg"
+            style="width: 150px; height: 150px; border-radius: 75px; box-shadow: 5px 3px 3px pink;" />
+
+    </div>
+
+    {% block body %}
+    {% endblock %}
+
+    <hr />
+    &copy; 2021. 백해란랜드
+
+
+</body>
+
+</html>
