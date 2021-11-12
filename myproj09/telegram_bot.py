@@ -25,18 +25,35 @@ def start(update, context):
 def echo(update, context):
     received_text: str = update.message.text
 
-    if tasks.ya.check_available(received_text):
-        response_text = tasks.ya.make_response(received_text)
-    elif tasks.naver_search.check_available(received_text):
-        response_text = tasks.naver_search.make_response(received_text)
-    elif tasks.pyy.check_available(received_text):
-        response_text= tasks.pyy.make_response(received_text)
-    elif tasks.ins.check_available(received_text):
-        response_text=tasks.ins.make_response(received_text)
-    elif tasks.self.check_available(received_text):
-        response_text=tasks.self.make_response(received_text)
-    else:
-        response_text = "지원하지 않는 명령입니다."
+    supported_tasks = [tasks. ya,
+                       tasks.naver_search,
+                       tasks. self,
+                       tasks.ins,
+                       tasks.pyy,
+                       tasks.reverse_string,
+                       tasks.predict_lotto_numbers,
+                       tasks.get_current_lotto_numbers,
+                       ]
+
+    for task in supported_tasks:
+        if task.check_available(received_text):
+            response_text = task.make_response(received_text)
+            break
+        else :
+            response_text = "지원하지 않는 명령입니다."
+
+    # if tasks.ya.check_available(received_text):
+    #     response_text = tasks.ya.make_response(received_text)
+    # elif tasks.naver_search.check_available(received_text):
+    #     response_text = tasks.naver_search.make_response(received_text)
+    # elif tasks.pyy.check_available(received_text):
+    #     response_text= tasks.pyy.make_response(received_text)
+    # elif tasks.ins.check_available(received_text):
+    #     response_text=tasks.ins.make_response(received_text)
+    # elif tasks.self.check_available(received_text):
+    #     response_text=tasks.self.make_response(received_text)
+    # else:
+    #     response_text = "지원하지 않는 명령입니다."
 
     context.bot.send_message(
         chat_id=update.effective_chat.id,
@@ -51,6 +68,8 @@ echo_handler = MessageHandler(
     echo,
 )
 dispatcher.add_handler(echo_handler)
+
+print("started bot...")
 
 updater.start_polling()
 updater.idle()
