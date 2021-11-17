@@ -1,0 +1,1 @@
+SELECT * FROM producttb WHERE company = 'LG' ;
