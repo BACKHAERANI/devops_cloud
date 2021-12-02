@@ -10,6 +10,12 @@
                          alt="{{ video.title }}"
                          class="card-img-top"
                     />
+                    <a href="/dogtube/{{ video.pk }}/">
+                        <img src="{{ video.thumbnail_file.url }}"
+                             alt="{{ video.title }}"
+                             class="card-img-top"
+                        />
+                    </a>
                     <div class="card-body">
                         <h5 class="card-title">
                             {{ video.title }}
