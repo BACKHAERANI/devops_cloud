@@ -1,6 +1,12 @@
 {% extends "delicious/layout.html" %}
 
 {% block content %}
+     {# 검색기능구현  #}
+    <form action ="" method="get">
+    <input type = "text" name="query" value="{{ request.GET.query }}"/>
+    <input type = "submit" value="검색"/>
+    </form>
+    {# 테이블 안으로 넣기  #}
     <table class = "table table-hover table-bordered">
         <thead>
         <tr>
@@ -8,13 +14,13 @@
             <th>telephone</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody> {# 네임을 누르면 pk값을 갖는 페이지로 넘어가기  #}
         {% for shop in shop_list %}
             <tr>
                 <td><a href="/delicious/{{ shop.pk }}/">
                     {{ shop.name }}
                 </a>
-                </td>
+                </td> {# 전화선택 가능하게 해서 누르면 전화되기 (구현은 x) #}
                 <td><a href="tel:{{ shop.telephone }}">
                     {{ shop.telephone }}
                 </a>
