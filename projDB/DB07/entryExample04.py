@@ -1,20 +1,38 @@
 from tkinter import *
-from tkinter import messagebox
 
-
-def clickButton():
-    messagebox.showinfo('버튼클릭', '버튼을 클릭했습니다.')
 
 window = Tk()
-window.title("버튼 이벤트 연습")
+window.title("입력관련 연습")
 window.geometry("200x200")
 
-button1 = Button(window, text = "버튼",  fg="red", bg="yellow", command =clickButton)
-button2 = Button(window, text = "버튼1", fg="red", bg="yellow", command =clickButton)
-button3 = Button(window, text = "버튼2", fg="red", bg="yellow", command =clickButton)
 
-button1.pack(side=TOP, padx=10, pady=10)
-button2.pack(side=TOP, Padx=10, pady=10)
-button3.pack(side=TOP, Padx=10, pady=10)
+# 프레임:영역 나누기
+# 엔트리 : 입력상자(사용자에게 입력받는 <input type=text))
+# 리스트박스 : 목록 (결과 화면 여려개의 row로 표현)
+# 프레임으로 upframe downframe 으로 영역을 나눠서 사용
+
+upFrame = Frame(window)
+upFrame.pack()
+
+midFrame = Frame(window)
+midFrame.pack()
+
+downFrame = Frame(window)
+downFrame.pack()
+
+
+editBox=Entry(upFrame, width = 10)
+editBox.pack(padx=20, pady=20)
+
+button = Button(midFrame, text = "중간")
+button.pack(padx=20, pady=20)
+
+listBox = Listbox(downFrame)
+listBox.pack()
+
+listBox.insert(END,"하나")
+listBox.insert(END,"둘")
+listBox.insert(END,"셋")
+
 
 window. mainloop()    # 선언 필수
