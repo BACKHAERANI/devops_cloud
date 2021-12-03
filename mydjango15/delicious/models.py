@@ -1,0 +1,14 @@
+from django.db import models
+
+
+class Shop(models.Model):
+    name = models.CharField(max_length=100, db_index=True)
+    description = models.TextField(blank=True)
+    address = models.CharField(max_length=100)
+    # TODO: GEODJANGO의 POINTFIELD를 사용
+    latitude = models.FloatField(verbose_name="위도")
+    longitube = models.FloatField(verbose_name="경도")
+    #TODO: 전화번호 값인지 여부를 체킹
+    telephone = models.CharField(max_length=15)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
