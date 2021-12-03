@@ -25,7 +25,7 @@ def insertDate():
     cur= conn.cursor()
 
 
-    name, birth, gender, posi,score = "","","","",""
+    name, birth, gender, posi, score = "","","","",""
 
     name = edt1.get()
     birth = edt2.get()
@@ -34,8 +34,8 @@ def insertDate():
     score = edt5.get()
 
     sql = ""
-    sql = "INSERT INTO raspberrypyTBL(name, birth, gender, posi) VALUES " \
-          "('" + name + "'," + birth + ",'" + gender + "','" + posi + "',"+score+")"
+    sql = "INSERT INTO raspberrypyTBL(name, birth, gender, posi,score) VALUES " \
+          "('" + name + "'," + birth + ",'" + gender + "','" + posi + "','"+score+"')"
 
 
 
@@ -58,15 +58,6 @@ def insertDate():
 
     #db 접속종료
     conn.close()
-
-
-
-
-def backFrame():
-    editFrame.pack()
-    listFrame.pack_forget()
-
-
 
 
 
@@ -102,10 +93,9 @@ def selectDate():
     lscore.append("-----------")
 
 
-#select
-
-    sql = "SELECT name, birth, gender, posi,score from raspberrypytbl WHERE name = '"+name+"'   ORDER BY score DESC"
+    sql = "SELECT name, birth, gender, posi, score from raspberrypytbl order by score DESC"
     cur.execute(sql)
+
     while(True):
         row = cur.fetchone()
 
@@ -116,6 +106,7 @@ def selectDate():
         lgender.append(row[2])
         lposi.append(row[3])
         lscore.append(row[4])
+
 
 
     # 1) 리스트 박스 초기화(기존 데이터 삭제
@@ -134,48 +125,53 @@ def selectDate():
         listscore.insert(END, item5)
 
     conn.close()
+
+
+
+
+
 # 화면구성
 
 window = Tk()
-window.geometry("1000x300")
+window.geometry("1000x450")
 window.title("hrent raspberrypy")
 
-editFrame = Frame(window)
-editFrame.pack()
+editFrame = Frame(window, bg = 'yellow')
+editFrame.pack(side=LEFT)
 
 listFrame = Frame(window)
-listFrame.pack(side= BOTTOM, fill=BOTH, expand=1)
+listFrame.pack(side=LEFT, fill=BOTH, expand=1)
 listFrame.pack_forget()
 
 label1 = Label(editFrame, text = "멤버명")
-label1.pack(side=LEFT, padx=10, pady=10)
+label1.pack(side=TOP, padx=10, pady=10)
 
 edt1 = Entry(editFrame, width=10)
-edt1.pack(side=LEFT, padx=10, pady=10)
+edt1.pack(side=TOP, padx=10, pady=10)
 
 label2 = Label(editFrame, text = "생년월일")
-label2.pack(side=LEFT, padx=10, pady=10)
+label2.pack(side=TOP, padx=10, pady=10)
 
 edt2 = Entry(editFrame, width=10)
-edt2.pack(side=LEFT, padx=10, pady=10)
+edt2.pack(side=TOP, padx=10, pady=10)
 
 label3 = Label(editFrame, text = "성별")
-label3.pack(side=LEFT, padx=10, pady=10)
+label3.pack(side=TOP, padx=10, pady=10)
 
 edt3 = Entry(editFrame, width=10)
-edt3.pack(side=LEFT, padx=10, pady=10)
+edt3.pack(side=TOP, padx=10, pady=10)
 
 label4 = Label(editFrame, text = "포지션")
-label4.pack(side=LEFT, padx=10, pady=10)
+label4.pack(side=TOP, padx=10, pady=10)
 
 edt4 = Entry(editFrame, width=10)
-edt4.pack(side=LEFT, padx=10, pady=10)
+edt4.pack(side=TOP, padx=10, pady=10)
 
 label5 = Label(editFrame, text = "월말평가점수")
-label5.pack(side=LEFT, padx=10, pady=10)
+label5.pack(side=TOP, padx=10, pady=10)
 
 edt5 = Entry(editFrame, width=10)
-edt5.pack(side=LEFT, padx=10, pady=10)
+edt5.pack(side=TOP, padx=10, pady=10)
 
 
 
@@ -184,8 +180,8 @@ edt5.pack(side=LEFT, padx=10, pady=10)
 btninsert = Button(editFrame, text = "입력", command= insertDate)
 btninsert.pack(side=LEFT, padx=10, pady=10)
 
-btnselect =  Button(editFrame, text = "조회", command= selectDate)
-btnselect.pack(side=LEFT, padx=10, pady=10)
+btnselect =  Button(editFrame, text = "연습생조회", command= selectDate)
+btnselect.pack(side=BOTTOM, padx=10, pady=10)
 
 btnre =  Button(listFrame, text = "돌아가기", command= backFrame)
 btnre.pack(side=LEFT, padx=10, pady=10)
@@ -204,6 +200,27 @@ listposi.pack(side=LEFT,fill=BOTH, expand=1)
 
 listscore = Listbox(listFrame)
 listscore.pack(side=LEFT,fill=BOTH, expand=1)
+
+
+#메뉴
+
+def func_open():
+    messagebox.showinfo("데뷔조","아직미정")
+
+def func_exit():
+    window.quit()
+    window.destroy()
+
+
+
+mainMenu = Menu(window)
+window.config(menu=mainMenu)
+
+fileMenu = Menu(mainMenu)
+mainMenu.add_cascade(label="메뉴", menu=fileMenu)
+fileMenu.add_command(label="데뷔조", command=func_open)
+fileMenu.add_separator()
+fileMenu.add_command(label="종료", command = func_exit)
 
 window.mainloop()
 

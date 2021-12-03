@@ -4,17 +4,10 @@ from tkinter import *
 from tkinter import messagebox
 
 
-
-# 데이터베이스연동함수
-
-
 def backFrame():
     editFrame.pack()
     listFrame.pack_forget()
 
-
-
-#insert
 
 
 def insertDate():
@@ -35,7 +28,7 @@ def insertDate():
 
     sql = ""
     sql = "INSERT INTO raspberrypyTBL(name, birth, gender, posi,score) VALUES " \
-          "('" + name + "'," + birth + ",'" + gender + "','" + posi + "','"+score+"')"
+          "('" + name + "'," + birth + ",'" + gender + "','" + posi + "',"+score+")"
 
 
 
@@ -66,8 +59,7 @@ def selectDate():
     cur = None
 
     name = edt1.get()
-    editFrame.pack_forget()
-    listFrame.pack(side=BOTTOM, fill=BOTH, expand=1)
+
 
     lname, lbirth, lgender, lposi, lscore = [], [], [], [], []
 
@@ -80,17 +72,19 @@ def selectDate():
     lname.append("이름")
     lname.append("--------")
 
-    lbirth.append("생일")
+    lbirth.append("생년월일")
     lbirth.append("----------")
 
     lgender.append("성별")
     lgender.append("----------")
 
-    lposi.append("포지션")
+    lposi.append("예상포지션")
     lposi.append("-----------")
 
     lscore.append("월말평가점수")
     lscore.append("-----------")
+
+
 
 
     sql = "SELECT name, birth, gender, posi, score from raspberrypytbl order by score DESC"
@@ -127,51 +121,115 @@ def selectDate():
     conn.close()
 
 
+def selectData():
+    conn = None
+    cur = None
 
+    name = edt1.get()
+    editFrame.pack_forget()
+    listFrame.pack(side=BOTTOM, fill=BOTH, expand=1)
+
+    lname, lbirth, lgender, lposi, lscore = [], [], [], [], []
+
+
+    conn = pymysql.connect(host="127.0.0.1", user="root", password="1234", db="hrent", charset="utf8")
+
+    cur = conn.cursor()
+
+
+    lname.append("이름")
+    lname.append("--------")
+
+    lbirth.append("생일")
+    lbirth.append("----------")
+
+    lgender.append("성별")
+    lgender.append("----------")
+
+    lposi.append("포지션")
+    lposi.append("-----------")
+
+    lscore.append("월말평가점수")
+    lscore.append("-----------")
+
+
+#select
+
+    sql = "SELECT name, birth, gender, posi,score from raspberrypytbl where name= '"+name+"' ORDER BY score DESC"
+    cur.execute(sql)
+    while(True):
+        row = cur.fetchone()
+
+        if row == None:
+            break
+        lname.append(row[0])
+        lbirth.append(row[1])
+        lgender.append(row[2])
+        lposi.append(row[3])
+        lscore.append(row[4])
+
+
+    # 1) 리스트 박스 초기화(기존 데이터 삭제
+    listname.delete(0, listname.size() - 1)  # listUserID는 gui
+    listbirth.delete(0, listbirth.size() - 1)
+    listgender.delete(0, listgender.size() - 1)
+    listposi.delete(0, listposi.size() - 1)
+    listscore.delete(0, listscore.size() - 1)
+
+    # 2) select 해온 데이터 insert
+    for item1, item2, item3, item4, item5 in zip(lname, lbirth, lgender, lposi, lscore):
+        listname.insert(END, item1)
+        listbirth.insert(END, item2)
+        listgender.insert(END, item3)
+        listposi.insert(END, item4)
+        listscore.insert(END, item5)
+
+    conn.close()
 
 
 # 화면구성
 
 window = Tk()
-window.geometry("1000x450")
+window.geometry("1200x450")
 window.title("hrent raspberrypy")
 
-editFrame = Frame(window, bg = 'yellow')
-editFrame.pack(side=LEFT)
+
+
+editFrame = Frame(window, bg = 'gold')
+editFrame.pack()
 
 listFrame = Frame(window)
-listFrame.pack(side=LEFT, fill=BOTH, expand=1)
-listFrame.pack_forget()
+listFrame.pack(side=BOTTOM, fill=BOTH, expand=1)
 
-label1 = Label(editFrame, text = "멤버명")
-label1.pack(side=TOP, padx=10, pady=10)
+label1 = Label(editFrame, text = "연습생 이름:",bg = 'gold')
+label1.pack(side=LEFT, padx=10, pady=10)
 
 edt1 = Entry(editFrame, width=10)
-edt1.pack(side=TOP, padx=10, pady=10)
+edt1.pack(side=LEFT, padx=10, pady=10)
 
-label2 = Label(editFrame, text = "생년월일")
-label2.pack(side=TOP, padx=10, pady=10)
+label2 = Label(editFrame, text = "생년월일:",bg = 'gold' )
+label2.pack(side=LEFT, padx=10, pady=10)
 
 edt2 = Entry(editFrame, width=10)
-edt2.pack(side=TOP, padx=10, pady=10)
+edt2.pack(side=LEFT, padx=10, pady=10)
 
-label3 = Label(editFrame, text = "성별")
-label3.pack(side=TOP, padx=10, pady=10)
+label3 = Label(editFrame, text = "성별:",bg = 'gold')
+label3.pack(side=LEFT, padx=10, pady=10)
 
 edt3 = Entry(editFrame, width=10)
-edt3.pack(side=TOP, padx=10, pady=10)
+edt3.pack(side=LEFT, padx=10, pady=10)
 
-label4 = Label(editFrame, text = "포지션")
-label4.pack(side=TOP, padx=10, pady=10)
+label4 = Label(editFrame, text = "예상포지션:",bg = 'gold')
+label4.pack(side=LEFT, padx=10, pady=10)
 
 edt4 = Entry(editFrame, width=10)
-edt4.pack(side=TOP, padx=10, pady=10)
+edt4.pack(side=LEFT, padx=10, pady=10)
 
-label5 = Label(editFrame, text = "월말평가점수")
-label5.pack(side=TOP, padx=10, pady=10)
+label5 = Label(editFrame, text = "월말평가점수:",bg = 'gold')
+label5.pack(side=LEFT, padx=10, pady=10)
 
 edt5 = Entry(editFrame, width=10)
-edt5.pack(side=TOP, padx=10, pady=10)
+edt5.pack(side=LEFT, padx=10, pady=10)
 
 
 
@@ -180,11 +238,15 @@ edt5.pack(side=TOP, padx=10, pady=10)
 btninsert = Button(editFrame, text = "입력", command= insertDate)
 btninsert.pack(side=LEFT, padx=10, pady=10)
 
-btnselect =  Button(editFrame, text = "연습생조회", command= selectDate)
+btnselect =  Button(editFrame, text = "연습생전체", command= selectDate)
 btnselect.pack(side=BOTTOM, padx=10, pady=10)
+
+btnselect =  Button(editFrame, text = "연습생조회", command= selectData)
+btnselect.pack(side=LEFT, padx=10, pady=10)
 
 btnre =  Button(listFrame, text = "돌아가기", command= backFrame)
 btnre.pack(side=LEFT, padx=10, pady=10)
+
 
 listname = Listbox(listFrame)
 listname.pack(side=LEFT,fill=BOTH, expand=1)

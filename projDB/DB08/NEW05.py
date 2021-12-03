@@ -1,3 +1,5 @@
+import tkinter as tk
+from tkinter import ttk
 import pymysql
 from tkinter import *
 from tkinter import messagebox
@@ -221,9 +223,10 @@ def deleteData():
 
 # 화면구성----------------------------------------------------------------------------------------------------
 
-window = Tk()
+window = tk.Tk()
 window.geometry("1200x480")
 window.title("hrent raspberrypy project")
+
 
 photo1 = PhotoImage(file="C:\Dev\hr.png")
 pLabel = Label(window, image=photo1)
@@ -254,6 +257,9 @@ label3.pack(side=LEFT, padx=10, pady=10)
 edt3 = Entry(editFrame, width=10)
 edt3.pack(side=LEFT, padx=10, pady=10)
 
+
+
+
 label4 = Label(editFrame, text = "예상포지션:")
 label4.pack(side=LEFT, padx=10, pady=10)
 
@@ -268,6 +274,7 @@ edt5.pack(side=LEFT, padx=10, pady=10)
 
 
 #버튼
+
 
 btninsert = Button(editFrame, text = "입력", command= insertDate)
 btninsert.pack(side=LEFT, padx=10, pady=10)
