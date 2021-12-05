@@ -18,3 +18,7 @@ def shop_detail(request: HttpRequest, pk: int) -> HttpResponse:
     template_name = "hwangridan/shop_detail.html"
     context_data = {"shop": shop,}
     return render(request, template_name,context_data)
+
+
+def shop_new_1(request: HttpRequest) -> HttpResponse:
+    return render(request, "hwangridan/shop_form.html", {})

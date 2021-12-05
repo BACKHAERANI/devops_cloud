@@ -1,0 +1,23 @@
+{% extends "hwangridan/layout.html" %}
+
+{% block content %}
+    <style>
+    input,textarea{
+        display:block;
+        margin-bottom: 0.5em;
+    }
+    </style>
+
+    <h2>황리단길 맛집을 추천해주세요</h2>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        이름:<input type="text" name="name"/>
+        설명:<textarea type="text" name="description"></textarea>
+        사진:<input type="file" name="photo"/>
+        주소:<input type="text" name="address"/>
+        위도:<input type="text" name="latitude"/>
+        경도:<input type="text" name="longitude"/>
+        <input type="submit" value="저장하기"/>
+    </form>
+{% endblock %}
