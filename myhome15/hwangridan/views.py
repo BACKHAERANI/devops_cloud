@@ -10,8 +10,8 @@ def shop_list(request: HttpRequest) -> HttpResponse:
     return render(request,template_name, context_data)
 
 
-def shop_detail(request: HttpRequest, pk:int) -> HttpResponse:
+def shop_detail(request: HttpRequest, pk: int) -> HttpResponse:
     shop = Shop.objects.get(pk=pk)
-    template_name = "hwangridan/shop_detail"
+    template_name = "hwangridan/shop_detail.html"
     context_data = {"shop": shop,}
     return render(request, template_name,context_data)
