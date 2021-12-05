@@ -1,7 +1,7 @@
 {% extends "hwangridan/layout.html" %}
 
 {% block content %}
-    <table>
+    <table class = "table table-hover table-bordered">
     <thead>
      <tr>
          <th>name</th>
@@ -10,9 +10,15 @@
     </thead>
         <tbody>
         {% for shop in shop_list %}
-            <tr></tr>
-            <td>{{ shop.name }}</td>
-            <td>{{ shop.telephone }}</td>
+            <tr>
+            <td><a href="/hwangridan/{{ shop.pk }}/">
+                {{ shop.name }}</td>
+            <td>
+                <a href="tel:{{ shop.telephone }}">
+                    {{ shop.telephone }}
+            </a>
+            </td>
+            </tr>
         {% endfor %}
         </tbody>
     </table>
