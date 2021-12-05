@@ -4,6 +4,7 @@ from django.db import models
 class Shop(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField(blank=True)
+    photo = models.ImageField(blank=True)
     address = models.CharField(max_length=100)
     latitude = models.FloatField(verbose_name="위도")
     longitude = models.FloatField(verbose_name="경도")
