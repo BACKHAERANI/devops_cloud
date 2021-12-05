@@ -2,9 +2,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from hwangridan.views import shop_list, shop_detail
 
 urlpatterns = [
-    path('admin/', admin.site.urls),]
+    path('admin/', admin.site.urls),
+    path('hwangridan/', shop_list),
+    path('hwangridan/<int:pk>/', shop_detail),
+
+]
 
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
