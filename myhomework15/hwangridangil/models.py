@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Shop(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, db_index=True)
     description = models.TextField(blank=True)
     photo = models.ImageField(blank=True)
     address = models.CharField(max_length=100)
