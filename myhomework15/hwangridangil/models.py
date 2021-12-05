@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Shop(models.Model):
-    name = models.CharField(max_length=100, db_index=True)
+    name = models.CharField(max_length=50)
     description = models.TextField(blank=True)
     address = models.CharField(max_length=100)
     latitude = models.FloatField(verbose_name="위도")
@@ -10,4 +10,3 @@ class Shop(models.Model):
     telephone = models.CharField(max_length=15)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
