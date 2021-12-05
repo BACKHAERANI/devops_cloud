@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpRequest, HttpResponse
+from django.views.generic import CreateView
+
 from hwangridan.models import Shop
 
 
@@ -21,4 +23,30 @@ def shop_detail(request: HttpRequest, pk: int) -> HttpResponse:
 
 
 def shop_new_1(request: HttpRequest) -> HttpResponse:
-    return render(request, "hwangridan/shop_form.html", {})
+    if request.method == "GET":
+        return render(request, "hwangridan/shop_form.html", {})
+    else:
+        name = request.POST["name"]
+        description = request.POST["description"]
+        photo = request.POST["photo"]
+        address = request.POST["address"]
+        latitude = request.POST["latitude"]
+        longitude = request.POST["longitude"]
+        telephone = request.POST["telephone"]
+        Shop.objects.create(
+            name=name,
+            description=description,
+            photo=photo,
+            address=address,
+            latitude=latitude,
+            longitude=longitude,
+            telephone=telephone,
+        )
+        return redirect('/hwangridan/')
+
+
+shop_new = CreateView.as_view(
+    model=Shop,
+    form_class=ShopForm,
+    success_url="/hwangridan/"
+)

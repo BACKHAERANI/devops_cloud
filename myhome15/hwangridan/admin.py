@@ -7,7 +7,7 @@ class ShopAdmin(admin.ModelAdmin):
     list_display_links = ["name"]
 
 
-admin.site.register(Shop,ShopAdmin)
+admin.site.register(Shop, ShopAdmin)
 
 
 

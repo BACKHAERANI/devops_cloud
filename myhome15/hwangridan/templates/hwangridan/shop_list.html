@@ -1,7 +1,7 @@
 {% extends "hwangridan/layout.html" %}
 
 {% block content %}
-    <form action = "" method="get">
+    <form action = "" method="get" enctype="multipart/form-data">
         <input type="text" name="query" value="{{ request.GET.guery }}" />
     <input type="submit" value="검색"/>
     </form>
