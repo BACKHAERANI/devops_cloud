@@ -5,6 +5,9 @@ from hrdan.models import Shop
 
 def shop_list(request: HttpRequest) -> HttpResponse:
     qs = Shop.objects.all()
+    query = request.GET.get("query", "")
+    if query:
+        qs = qs.filter(name__icontains=query)
     template_name = "hrdan/shop_list.html"
     context_data = {"shop_list": qs,}
     return render(request, template_name, context_data)
