@@ -17,7 +17,8 @@
         <tbody> {# 네임을 누르면 pk값을 갖는 페이지로 넘어가기  #}
         {% for shop in shop_list %}
             <tr>
-                <td><a href="/delicious/{{ shop.pk }}/">
+                <td>
+                    <a href="{% url "delicious:shop_detail" shop.pk %}">
                     {{ shop.name }}
                 </a>
                 </td> {# 전화선택 가능하게 해서 누르면 전화되기 (구현은 x) #}
