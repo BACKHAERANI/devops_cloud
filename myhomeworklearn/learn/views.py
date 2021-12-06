@@ -15,3 +15,7 @@ def show_detail(request: HttpRequest, pk: int) -> HttpResponse:
     template_name = "learn/show_detail.html"
     context_data = {"show": show,}
     return render(request, template_name, context_data)
+
+
+
+
