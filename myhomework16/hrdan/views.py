@@ -9,3 +9,10 @@ def shop_list(request: HttpRequest) -> HttpResponse:
     context_data = {"shop_list": qs,}
     return render(request, template_name, context_data)
 
+
+def shop_detail(request: HttpRequest, pk:int) -> HttpResponse:
+    shop = Shop.objects.get(pk=pk)
+    template_name = "hrdan/shop_detail.html"
+    context_data = {"shop": shop}
+    return render(request, template_name, context_data)
+
