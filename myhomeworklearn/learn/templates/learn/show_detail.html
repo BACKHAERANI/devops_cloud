@@ -1,0 +1,15 @@
+{% extends "learn/layout.html" %}
+
+{% block content %}
+<h2>{{ show.name }}</h2>
+    <ul>
+    <li>주소: {{ show.address }}</li>
+    <img src="{{ show.photo.url }}">
+    </ul>
+
+    {{ show.description | linebreaks }}
+
+    <hr/>
+    <a href="/learn/" class = "btn btn-danger">목록으로</a>
+
+{% endblock %}

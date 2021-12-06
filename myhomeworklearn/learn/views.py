@@ -10,3 +10,8 @@ def show_list(request: HttpRequest) -> HttpResponse:
     return render(request, template_name, context_data)
 
 
+def show_detail(request: HttpRequest, pk: int) -> HttpResponse:
+    show = Show.objects.get(pk=pk)
+    template_name = "learn/show_detail.html"
+    context_data = {"show": show,}
+    return render(request, template_name, context_data)
