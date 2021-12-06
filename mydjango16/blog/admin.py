@@ -1,5 +1,5 @@
 from django.contrib import admin
-from blog.models import Post, Comment
+from blog.models import Post, Comment, Tag
 
 
 @admin.register(Post)
@@ -14,3 +14,6 @@ class CommentAdmin(admin.ModelAdmin):
     list_display_links = ["post"]
 
 
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+    pass
