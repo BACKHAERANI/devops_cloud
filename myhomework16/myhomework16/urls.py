@@ -2,9 +2,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from hrdan.views import shop_list
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('hrdan/', shop_list),
 ]
 
 urlpatterns += static(settings.MEDIA_URL,
