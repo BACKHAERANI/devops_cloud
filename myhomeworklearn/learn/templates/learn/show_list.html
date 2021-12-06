@@ -1,0 +1,29 @@
+{% extends "learn/layout.html" %}
+
+{% block content %}
+    <table class="table table-hover table-bordered">
+        <thead>
+        <tr>
+            <th>name</th>
+            <th>telephone</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for show in show_list %}
+            <tr>
+                <td>
+                    <a href="/learn/{{ show.pk }}/">
+                    {{ show.name }}
+                    </a>
+                </td>
+                <td>
+                    <a href="tel:{{ show.telephone }}">
+                        {{ show.telephone }}
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
