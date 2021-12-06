@@ -1,6 +1,10 @@
 {% extends "learn/layout.html" %}
 
 {% block content %}
+    <form action = "" method="get" enctype="multipart/form-data">
+        <input type="text" name="query" value="{{ request.GET.get.query }}" />
+    <input type="submit" value="검색"/>
+    </form>
     <table class="table table-hover table-bordered">
         <thead>
         <tr>
@@ -11,11 +15,8 @@
         <tbody>
         {% for show in show_list %}
             <tr>
-                <td>
-                    <a href="/learn/{{ show.pk }}/">
-                    {{ show.name }}
-                    </a>
-                </td>
+                <td><a href="/learn/{{ show.pk }}/">
+                    {{ show.name }}</td>
                 <td>
                     <a href="tel:{{ show.telephone }}">
                         {{ show.telephone }}

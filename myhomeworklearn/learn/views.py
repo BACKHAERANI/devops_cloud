@@ -5,6 +5,9 @@ from learn.models import Show
 
 def show_list(request: HttpRequest) -> HttpResponse:
     qs = Show.objects.all()
+    query = request.GET.get("query", "")
+    if query:
+        qs = qs.filter(name__icontains=query)
     template_name = "learn/show_list.html"
     context_data ={"show_list": qs,}
     return render(request, template_name, context_data)
