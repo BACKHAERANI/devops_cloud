@@ -1,3 +1,17 @@
 from django.contrib import admin
+from mall.models import Shop, Comment, Tag
 
-# Register your models here.
+
+@admin.register(Shop)
+class ShopAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+    pass
