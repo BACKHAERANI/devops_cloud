@@ -5,6 +5,9 @@ from mall.models import Shop
 
 def shop_list(request: HttpRequest) -> HttpResponse:
     qs = Shop.objects.all()
+    query = request.GET.get("query","")
+    if query:
+        qs = qs.filter(shop_name__icontains=query)
     return render(request, "mall/shop_list.html", {"shop_list": qs,})
 
 
