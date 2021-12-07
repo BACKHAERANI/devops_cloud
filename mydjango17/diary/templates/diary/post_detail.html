@@ -4,10 +4,29 @@
 
 
     <h2>{{ post.title }}</h2>
+<p>
+ 태그:
+{% for tag in tag_list %}
+<span class="badge bg-danger">
+    {{ tag.name }}
+</span>
+{% endfor %}
 
-   사진: <img src="{{ post.photo.url }}" alt="이미지없음"/>
+</p>
+    <img src="{{ post.photo.url }}" alt="이미지없음"/>
 
     {{ post.content|linebreaks }}
+
+    <h3>댓글</h3>
+    <ul>
+        {% for comment in comment_list %}
+            <li>
+                {{ comment.message }}
+                by{{ comment.author_name }}
+                at{{ comment.created_at }}
+            </li>
+        {% endfor %}
+    </ul>
 
     <hr/>
 
