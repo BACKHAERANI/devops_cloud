@@ -1,0 +1,17 @@
+{% extends "mall/layout.html" %}
+
+{% block content%}
+
+    <h2>{{ shop.author_name }}</h2>
+    <img src=" {{ shop.photo.url }}" alt = "{{ shop.shop_name }}"/>
+
+
+    {{ shop.content | linebreaks }}
+
+    <hr/>
+
+    <a href="{% url "mall:shop_list" %}">
+    목록으로
+    </a>
+
+{% endblock %}

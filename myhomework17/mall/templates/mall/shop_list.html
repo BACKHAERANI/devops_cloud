@@ -1,0 +1,19 @@
+{% extends "mall/layout.html" %}
+
+
+{% block content %}
+
+    <ul>
+    {% for shop in shop_list %}
+
+    <li>
+    <a href="{% url "mall:shop_detail" shop.pk %}">
+      {{ shop.author_name }}
+    </a>
+
+    </li>
+    {% endfor %}
+
+    </ul>
+
+{% endblock %}
