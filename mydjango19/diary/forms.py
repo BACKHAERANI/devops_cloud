@@ -16,4 +16,11 @@ from diary.models import Post
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = '__all__'
+        #  fields = '__all__'
+        fields = [
+            "author_name",
+            "title",
+            "content",
+            "photo",
+            "tag_set",
+        ]
