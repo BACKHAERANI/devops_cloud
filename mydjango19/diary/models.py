@@ -1,3 +1,4 @@
+from django.core.validators import MinLengthValidator
 from django.db import models
 
 
@@ -11,7 +12,9 @@ class TimestampedModel(models.Model):
 
 class Post(TimestampedModel):
     author_name = models.CharField(max_length=20)
-    title = models.CharField(max_length=200, db_index=True)
+    title = models.CharField(max_length=200,
+                             db_index=True,
+                             validators=[MinLengthValidator(3)],)
     content = models.TextField()
     photo = models.ImageField(upload_to="diary/post/%Y/%m/%d")
     tag_set = models.ManyToManyField("Tag", blank=True)
