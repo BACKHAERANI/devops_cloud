@@ -11,7 +11,10 @@
 
     <li>
     <a href="{% url "mall:shop_detail" shop.pk %}">
-      {{ shop.author_name}} {{shop.shop_name }}
+      {{ shop.author_name}}
+    </a>
+    <a>
+        {{shop.shop_name }}
     </a>
 
     </li>
