@@ -10,6 +10,7 @@ class TimestampedModel(models.Model):
 
 
 class Post(TimestampedModel):
+    author_name = models.CharField(max_length=20)
     title = models.CharField(max_length=200, db_index=True)
     content = models.TextField()
     photo = models.ImageField(upload_to="diary/post/%Y/%m/%d")

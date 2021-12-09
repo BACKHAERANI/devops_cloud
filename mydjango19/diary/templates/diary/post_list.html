@@ -25,7 +25,11 @@
                     </div>
                 </div>
             </div>
+    {% endfor %}
             </div>
-        {% endfor %}
+        <hr/>
+    <a href ="{% url "diary:post_new"%}" class="btn btn-primary">
+    포스팅쓰기
+    </a>
 
 {% endblock %}

@@ -4,16 +4,16 @@
 
 
     <h2>{{ post.title }}</h2>
-<p>
- 태그:
-{% for tag in tag_list %}
-    <a href = "{%  url "diary:tag_detail" tag.name %}" class="badge bg-danger">
-    {{ tag.name }}
-</a>
+    <p>
+        태그:
+        {% for tag in tag_list %}
+            <a href="{% url "diary:tag_detail" tag.name %}" class="badge bg-danger">
+                {{ tag.name }}
+            </a>
 
-{% endfor %}
+        {% endfor %}
 
-</p>
+    </p>
     <img src="{{ post.photo.url }}" alt="{{ post.title }}"/>
 
     {{ post.content|linebreaks }}
@@ -30,7 +30,7 @@
     </ul>
 
     <hr/>
-
+    <a href="{% url "diary:post_edit" post.pk %}">수정하기</a>
     <a href="{% url "diary:post_list" %}">목록으로</a>
 
 
