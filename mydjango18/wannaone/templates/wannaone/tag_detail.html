@@ -1,0 +1,12 @@
+{% extends "wannaone/layout.html" %}
+
+{% block content %}
+    <h2>{{ tag_name }}</h2>
+    <div>
+        {% for star in star_list %}
+            <a href="{% url "wannaone:star_detail" star.pk %}">
+                {{ star.name }}
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

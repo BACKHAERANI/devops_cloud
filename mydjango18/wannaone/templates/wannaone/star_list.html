@@ -1,0 +1,31 @@
+{% extends "wannaone/layout.html" %}
+
+{% block content %}
+<form action="" method="get" >
+<input type="text" name="query"
+       value="{{ request.GET.query }}"
+       placeholder="당신의 멤버를 입력헤주세요💕"/>
+<input type="submit" value="검색">
+</form>
+
+    <ul>
+        <br>
+      <h3>워너원 멤버들</h3>
+
+        <br>
+
+        {% for star in star_list %}
+
+            <li>
+                <a href={% url "wannaone:star_detail" star.pk %}>
+                   {{ star.name }}
+                </a>
+
+            </li>
+
+        {% endfor %}
+
+    </ul>
+
+
+{% endblock %}

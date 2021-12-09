@@ -1,0 +1,28 @@
+{% extends "wannaone/layout.html" %}
+
+
+{% block content %}
+
+<h2>{{ star.name }}</h2>
+<p>
+태그:
+{% for tag in tag_detail %}
+    <a href="{% url "wannaone:tag_detail" tag.name %}" class="badge btn-danger">
+    {{ tag.name }}
+    </a>
+
+{% endfor %}
+
+</p>
+    <ui>
+
+        <img src= "{{ star.photo.url }}" alt = "{{ star.name }}">
+        <li>생일: {{ star.birth }}</li>
+        <li>소속사 : {{ star.ent }}</li>
+       {{ star.content |linebreaks }}
+
+    </ui>
+
+
+
+{% endblock %}
