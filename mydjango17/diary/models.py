@@ -41,7 +41,6 @@ class Tag(TimestampedModel):
     def __str__(self) -> str:
         return self.name
 
-
     class Meta:
         verbose_name="태그"   # 단수형
         verbose_name_plural="태그 목록"  # 복수형형
