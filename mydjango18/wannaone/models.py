@@ -17,7 +17,7 @@ class Star(Stamp):
     content = models.TextField()
     tag_set = models.ManyToManyField("Tag", blank=True)
 
-    def __str__(self)-> str:
+    def __str__(self) -> str:
         return self.name
 
     class Meta:
