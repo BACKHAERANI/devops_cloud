@@ -1,0 +1,11 @@
+{% extends "wannaone/layout.html" %}
+
+{% block content %}
+<h3>워너원 멤버에 대해 이야기해보자!</h3>
+    <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <input type="submit" value="저장하기"
+    </form>
+
+{% endblock %}
