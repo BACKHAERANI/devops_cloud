@@ -1,0 +1,13 @@
+{% extends "shop/layout.html" %}
+
+
+{% block content %}
+
+    <h3>{{ shop.name }}</h3>
+
+    {{ shop.description |linebreaks }}
+
+
+    <hr/>
+    {{ shop.created_at|timesince }} 전에 등록
+{% endblock %}
