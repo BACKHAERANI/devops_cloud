@@ -2,12 +2,26 @@
 
 
 {% block content %}
+    <br>
+    <h2>{{ shop.name }}</h2>
 
-    <h3>{{ shop.name }}</h3>
+    <br>
+    <p>
+        태그:
+        {% for tag in tag_list %}
+            <a href="{% url "shop:tag_detail" tag.name%}" class = "badge bg-success">
+                {{ tag.name }}
+            </a>
+            
+        {% endfor %}
+
+    </p>
+    <br>
 
     {{ shop.description |linebreaks }}
 
-
     <hr/>
     {{ shop.created_at|timesince }} 전에 등록
+
+
 {% endblock %}
