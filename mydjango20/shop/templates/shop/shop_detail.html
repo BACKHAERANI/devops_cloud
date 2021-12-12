@@ -21,22 +21,26 @@
 
     <hr/>
     {{ shop.created_at|timesince }} 전에 등록
-    <br>
-    <br>
+    <a href="{% url "shop:shop_edit" shop.pk %}">수정하기</a>
     <hr/>
-
+    <br>
+    <br>
     <h5>댓글</h5>
+    <a href="{% url "shop:review_new" shop.pk %}">댓글쓰기</a>
+    <br>
+    <br>
     <ul>
         {% for review in review_list %}
             <li>
                 {{ review.message }}
                 by {{ review.author_name }}
-                at {{ review.created_at|timesince }}
+                at {{ review.created_at|timesince }}전
             </li>
+<a href="{% url "shop:review_edit" shop.pk review.pk %}">Edit</a>
         {% endfor %}
 
     </ul>
-
-
+    <hr>
+    <a href="{% url "shop:shop_list" %}">목록으로</a>
 
 {% endblock %}
