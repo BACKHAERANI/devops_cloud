@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from shop.forms import ShopForm, ReviewForm
-from shop.models import Shop, Review
+from shop.models import Shop, Review, Category
 
 
 def shop_new(request: HttpRequest) -> HttpResponse:
@@ -22,11 +22,17 @@ def shop_new(request: HttpRequest) -> HttpResponse:
 
 
 def shop_list(request: HttpRequest) -> HttpResponse:
+    category_qs = Category.objects.all()
     qs = Shop.objects.all()
+    category_id = request.GET.get("category_id","")
+    if category_id:
+        qs = qs.filter(category__pk=category_id)
     query = request.GET.get("query","")
     if query:
         qs = qs.filter(name__icontains=query)
-    return render(request, "shop/shop_list.html", {"shop_list": qs})
+    return render(request,
+                  "shop/shop_list.html",
+                  {"category_list":category_qs, "shop_list": qs})
 
 
 def shop_edit(request: HttpRequest, pk: int) -> HttpResponse:

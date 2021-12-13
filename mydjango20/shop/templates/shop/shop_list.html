@@ -2,24 +2,37 @@
 
 
 {% block content %}
-<h2>배달 시킬 가게를 선택해주세요.</h2>
+    <h2>배달 시킬 가게를 선택해주세요.</h2>
 
- <ul>
+    <ul>
 
- {% for shop in shop_list %}
+        <li>
+            <a href="?category_id="> 전체</a>
 
-     <li>
+        </li>
+        {% for category in category_list %}
+            <li>
+                <a href="?category_id={{ category.pk }}">
+                    {{ category.name }}
+                </a>
+            </li>
+        {% endfor %}
+        <br>
+        <br>
+        {% for shop in shop_list %}
 
-    <a href="{% url "shop:shop_detail" shop.pk %}">
-        {{ shop.name }}
-    </a>
+            <li>
+
+                <a href="{% url "shop:shop_detail" shop.pk %}">
+                    {{ shop.name }}
+                </a>
 
 
-     </li>
+            </li>
 
- {% endfor %}
-<a href="{% url "shop:shop_new" %}" class="btn btn-primary">가게등록</a>
+        {% endfor %}
+        <a href="{% url "shop:shop_new" %}" class="btn btn-primary">가게등록</a>
 
- </ul>
+    </ul>
 
 {% endblock %}
