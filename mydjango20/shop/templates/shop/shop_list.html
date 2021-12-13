@@ -2,37 +2,50 @@
 
 
 {% block content %}
-    <h2>배달 시킬 가게를 선택해주세요.</h2>
+    <h2>오늘은 어디서 배달할까?</h2>
 
-    <ul>
+    <div class="row">
+        <div class="col-sm-8">가게 목록
+            <ul>
+                {% for shop in shop_list %}
 
-        <li>
-            <a href="?category_id="> 전체</a>
+                    <li>
 
-        </li>
-        {% for category in category_list %}
-            <li>
-                <a href="?category_id={{ category.pk }}">
-                    {{ category.name }}
-                </a>
-            </li>
-        {% endfor %}
-        <br>
-        <br>
-        {% for shop in shop_list %}
-
-            <li>
-
-                <a href="{% url "shop:shop_detail" shop.pk %}">
-                    {{ shop.name }}
-                </a>
+                        <a href="{% url "shop:shop_detail" shop.pk %}">
+                            {{ shop.name }}
+                        </a>
 
 
-            </li>
+                    </li>
 
-        {% endfor %}
-        <a href="{% url "shop:shop_new" %}" class="btn btn-primary">가게등록</a>
+                {% endfor %}
 
-    </ul>
 
+            </ul>
+
+        </div>
+        <div class="col-sm-4">카테고리
+
+            <ul>
+
+                <li>
+                    <a href="?category_id="> 전체</a>
+
+                </li>
+                {% for category in category_list %}
+                    <li>
+                        <a href="?category_id={{ category.pk }}">
+                            {{ category.name }}
+                        </a>
+                    </li>
+                {% endfor %}
+
+            </ul>
+        </div>
+    </div>
+    <br>
+<br>
+<div class="d-grid mb-3">
+    <a href="{% url "shop:shop_new" %}" class="btn btn-primary">가게등록</a>
+</div>
 {% endblock %}

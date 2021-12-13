@@ -2,15 +2,25 @@ from django.contrib import messages
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from shop.forms import ShopForm, ReviewForm
-from shop.models import Shop, Review, Category
+from shop.models import Shop, Review, Category, Tag
 
 
 def shop_new(request: HttpRequest) -> HttpResponse:
     if request.method == "POST":
         form = ShopForm(request.POST, request.FILES)
         if form.is_valid():
-            shop = form.save(commit=False)
-            shop.save()
+            saved_post = form.save()
+
+            tag_list=[]
+            tags = form.cleaned_data.get("tags","")
+            for word in tags.split(","):
+                tag_name = word.strip()
+                tag, __ = Tag.objects.get_or_create(name=tag_name)
+                tag_list.append(tag)
+            saved_post.tag_set.clear()   #간단구현을 위해 clear 호출
+            saved_post.tag_set.add(*tag_list)
+
+            saved_post.save()
             messages.success(request, "성공적으로 저장했습니다.")
             return redirect("shop:shop_list")
     else:

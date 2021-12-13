@@ -3,9 +3,14 @@ from shop.models import Shop, Review
 
 
 class ShopForm(forms.ModelForm):
+    tags = forms.CharField()
+
     class Meta:
         model = Shop
-        fields = '__all__'
+        fields = ["category",
+                  "name",
+                  "description",
+                  "telephone"]
 
 
 class ReviewForm(forms.ModelForm):
