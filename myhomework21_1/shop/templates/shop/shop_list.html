@@ -1,26 +1,16 @@
 {% extends "shop/layout.html" %}
 
+
 {% block content %}
-{% load bootstrap5 %}
+
 <div class="row">
-    <div class="col-sm-8">가게목록
-        <ul>
-        {% for shop in shop_list %}
-
-            <li>
-                <a href="{% url "shop:shop_detail" shop.pk %}">
-                    {{ shop.name }}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
-    </div>
-</div>
-
     <form action="" method="get" enctype="multipart/form-data">
         <input type="text" name="query" value="{{ request.GET.query }}">
         <input type="submit" value="검색하기">
     </form>
+<br>
+<br>
+
     <div class = "col-sm-4">카테고리
     <ul>
 
@@ -36,7 +26,20 @@
 
     </ul>
     </div>
+ <div class="col-sm-8">가게목록
+        <ul>
+        {% for shop in shop_list %}
+
+            <li>
+                <a href="{% url "shop:shop_detail" shop.pk %}">
+                    {{ shop.name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    </div>
+</div>
 
     <hr>
-    <a href="{% url "shop:shop_new" %}">가게 등록</a>
+    <a href="{% url "shop:shop_new" %}" class="btn btn-primary">가게 등록</a>
 {% endblock %}
