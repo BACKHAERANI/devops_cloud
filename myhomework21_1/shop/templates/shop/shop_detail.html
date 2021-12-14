@@ -8,7 +8,7 @@
     <p>
         태그:
         {% for tag in tag_list %}
-            <a href="{% url "shop:tag_detail" tag.name %}" class="badge bg-info">
+            <a href="{% url "shop:tag_detail" shop.pk %}" class="badge bg-info">
                 {{ tag.name }}
             </a>
 
