@@ -1,0 +1,15 @@
+{% extends "shop/layout.html" %}
+
+{% load bootstrap5 %}
+{% block content %}
+<h2>당신의 리뷰가 힘이 됩니다.</h2>
+
+    <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input type="submit"
+    value="저장하기"
+    class="btn bg-info"/>
+    </form>
+
+{% endblock %}

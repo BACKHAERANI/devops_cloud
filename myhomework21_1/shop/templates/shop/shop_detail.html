@@ -8,13 +8,14 @@
     <p>
         태그:
         {% for tag in tag_list %}
-            <a href="{% url "shop:tag_detail" shop.pk %}" class="badge bg-info">
+            <a href="{% url "shop:tag_detail" tag.name %}" class="badge bg-info">
                 {{ tag.name }}
             </a>
-
-
         {% endfor %}
     </p>
+     <div class="d-grid mb-4">
+    카테고리 : {{ shop.category }}
+    </div>
     <br>
     <br>
     {{ shop.description | linebreaks }}
@@ -23,4 +24,23 @@
 
     <hr>
     <a href="{% url "shop:shop_edit" shop.pk %}">수정하기</a>
+
+    <hr>
+    <br>
+    <a href="{% url "shop:review_new" shop.pk %}">
+        리뷰쓰기
+    </a>
+    <ul>
+        {% for review in review_list %}
+            <li>{{ review.message }}
+                by {{ review.name }}
+                at <span title="{{ review.created_at }}">
+               {{ review.created_at | timesince }}전
+    </span>
+            </li>
+            <a href="{% url "shop:review_edit" shop.pk review.pk  %}">
+                Edit
+            </a>
+        {% endfor %}
+    </ul>
 {% endblock %}
