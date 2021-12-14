@@ -3,7 +3,7 @@
 {% block content %}
 {% load bootstrap5 %}
 <div class="row">
-    <div class="col-sm-8">
+    <div class="col-sm-8">가게목록
         <ul>
         {% for shop in shop_list %}
 
@@ -21,7 +21,9 @@
         <input type="text" name="query" value="{{ request.GET.query }}">
         <input type="submit" value="검색하기">
     </form>
+    <div class = "col-sm-4">카테고리
     <ul>
+
         <a href="?category_id=">전체</a>
 
     {% for category in category_list %}
@@ -33,6 +35,7 @@
     {% endfor %}
 
     </ul>
+    </div>
 
     <hr>
     <a href="{% url "shop:shop_new" %}">가게 등록</a>

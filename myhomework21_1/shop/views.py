@@ -3,15 +3,22 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpRequest,HttpResponse
 
 from shop.forms import ShopForm
-from shop.models import Shop
+from shop.models import Shop, Category
 
 
 def shop_list(request:HttpRequest) -> HttpResponse:
+    category_qs = Category.objects.all()
     shop = Shop.objects.all()
+
+    category_id:str = request.GET.get("category_id","")
+    if category_id:
+        shop = shop.filter(category__pk=category_id)
+
     query = request.GET.get("query","")
     if query:
         shop = shop.filter(name__icontains=query)
-    return render(request, "shop/shop_list.html",{"shop_list":shop})
+
+    return render(request, "shop/shop_list.html",{"shop_list":shop, "category_list": category_qs})
 
 
 def shop_detail(request:HttpRequest, pk:int) -> HttpResponse:
