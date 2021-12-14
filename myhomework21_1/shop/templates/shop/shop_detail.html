@@ -1,21 +1,26 @@
-{%  extends "shop/layout.html" %}
+{% extends "shop/layout.html" %}
 
 
 {% block content %}
 
     <h2>{{ shop.name }}</h2>
 
+    <p>
+        태그:
+        {% for tag in tag_list %}
+            <a href="{% url "shop:tag_detail" tag.name %}" class="badge bg-info">
+                {{ tag.name }}
+            </a>
+
+
+        {% endfor %}
+    </p>
     <br>
-    태그:
-    {%  for tag in tag_list %}
-        {{ tag.name }}
-    {%  endfor %}
-<br>
-<br>
+    <br>
     {{ shop.description | linebreaks }}
     <hr>
     {{ shop.created_at | timesince }}
 
-<hr>
+    <hr>
     <a href="{% url "shop:shop_edit" shop.pk %}">수정하기</a>
 {% endblock %}

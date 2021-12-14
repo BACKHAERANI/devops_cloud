@@ -9,5 +9,7 @@ urlpatterns = [path('', views.shop_list, name="shop_list"),
                path('new/', views.shop_new, name="shop_new"),
                path('<int:pk>/edit/', views.shop_edit, name="shop_edit"),
                path('<int:pk>/edit/', views.shop_edit, name="shop_edit"),
+               path('tags/<str:tag_name>/', views.tag_detail, name="tag_detail"),
+
 
                ]
