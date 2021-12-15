@@ -6,7 +6,9 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('accounts.urls')),
     path('blog/', include('blog.urls')),
+
     # url 설정은 blog기능구현 후에 pattern name으로 변경예정
     path('', RedirectView.as_view(url='/blog/'), name='root'),
 ]
