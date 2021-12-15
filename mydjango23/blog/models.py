@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class TimeStampedModel(models.Model):
@@ -26,6 +27,12 @@ class Post(TimeStampedModel):
     photo = models.ImageField(upload_to="blog/post/%Y/%m/%d")
     tag_set = models.ManyToManyField('Tag', blank=True)
     status = models.CharField(max_length=1, choices=[('D', '초안'), ('P', '공개')], db_index=True, default='D')
+
+    def __str__(self) -> str:
+        return self.title
+
+    def get_absolute_url(self) -> str:
+        return reverse("blog:post_detail", args=[self.pk])
 
 
 class Comment(TimeStampedModel):
