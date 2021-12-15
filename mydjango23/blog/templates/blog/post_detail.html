@@ -1,0 +1,25 @@
+{% extends "blog/layout.html" %}
+
+
+{% block content %}
+
+    <h3>{{ post.title }}</h3>
+
+    <p>
+   tag:
+    {% for tag in post.tag_set.all %}
+    {{ tag.name }}
+    {% endfor %}
+    </p
+            <tr>
+
+            <img src="{{ post.photo.url }}" alt="{{ post.title }}">
+
+             {{ post.content|linebreaks }}
+            </tr>
+
+
+            <a href="{% url "blog:post_edit" post.pk %}">
+            포스팅 수정
+            </a>
+{% endblock %}
