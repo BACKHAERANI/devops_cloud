@@ -21,7 +21,7 @@ def post_new(request:HttpRequest) -> HttpResponse:
         if form.is_valid():
             saved_post = form.save()
             messages.success(request, "새로운 포스팅을 저장했습니다.")
-            return redirect("blog:post_detail", saved_post.pk)
+            return redirect(saved_post)
     else:
         form = PostForm()
 
@@ -35,7 +35,7 @@ def post_edit(request: HttpRequest, pk:int) -> HttpResponse:
         if form.is_valid():
             saved_post = form.save()
             messages.success(request, f"#{pk}번째 포스팅을 저장했습니다.")
-            return redirect("blog:post_detail", saved_post.pk)
+            return redirect( saved_post)
     else:
         form = PostForm(instance=post)
 
