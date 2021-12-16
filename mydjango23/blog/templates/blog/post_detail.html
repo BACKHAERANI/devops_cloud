@@ -1,6 +1,9 @@
 {% extends "blog/layout.html" %}
 
-
+{% block page_title %}
+    {{ block.super }} ::
+    {{ post.title }}
+{% endblock %}
 {% block content %}
 
     <h3>{{ post.title }}</h3>
