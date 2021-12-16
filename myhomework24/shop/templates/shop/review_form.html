@@ -1,0 +1,10 @@
+{% extends "shop/layout.html" %}
+{% load bootstrap5 %}
+
+{% block content %}
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <inpu
+{% endblock %}t type="submit" value="리뷰입력">
+</form>

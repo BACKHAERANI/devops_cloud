@@ -1,0 +1,13 @@
+{% extends "shop/layout.html" %}
+
+
+{% block content %}
+{% load bootstrap5 %}
+
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input type="submit" value="가게등록">
+</form>
+
+{% endblock %}
