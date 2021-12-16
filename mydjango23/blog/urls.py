@@ -1,6 +1,6 @@
 from django.urls import path
-# from blog.views import fbv as views
-from blog.views import cbv as views    #as views :views라고 부르겠다
+from blog.views import fbv as views
+# from blog.views import cbv as views    #as views :views라고 부르겠다
 
 app_name = 'blog'
 
