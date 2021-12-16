@@ -1,0 +1,49 @@
+{% extends "shop/layout.html" %}
+
+
+{% block content %}
+    <br>
+    <h2>{{ shop.name }}</h2>
+
+    <br>
+    <ul>
+        <p>
+            tag:
+           {% for tag in shop.tag_set.all %}
+         <a href="{% url "shop:tag_detail" shop.pk %}" class="badge bg-primary">{{ tag.name }}</a>
+    {% endfor %}
+
+        </p>
+        <br>
+       카테고리 : {{ shop.category }}
+    </ul>
+
+    <br>
+    <img src="{{ shop.photo.url }}" alt="{{ shop.title }}">
+    {{ shop.description |linebreaks }}
+
+    <hr/>
+    {{ shop.created_at|timesince }} 전에 등록
+    <a href="{% url "shop:shop_edit" shop.pk %}">수정하기</a>
+    <a href="{% url "shop:shop_delete" shop.pk %}">삭제하기</a>
+    <br>
+    <hr>
+    <h5>댓글</h5>
+    <a href="{% url "shop:review_new" shop.pk %}">댓글쓰기</a>
+    <br>
+    <ul>
+        {% for review in shop.review_set.all %}
+            <li>
+                {{ review.message }}
+                by {{ review.author_name }}
+                at {{ review.created_at|timesince }}전
+            </li>
+            <a href="{% url "shop:review_edit" shop.pk review.pk %}">수정</a>
+            <a href="{% url "shop:review_delete" shop.pk review.pk %}">삭제</a>
+        {% endfor %}
+
+    </ul>
+    <hr>
+    <a href="{% url "shop:shop_list" %}">목록으로</a>
+
+{% endblock %}
