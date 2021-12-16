@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'bootstrap5',
     'shop',
     ]
+
 if DEBUG:
     INSTALLED_APPS += ['debug_toolbar']
 
