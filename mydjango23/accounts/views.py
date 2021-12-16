@@ -7,6 +7,8 @@ from django.views.generic import CreateView
 from django.http import HttpRequest, HttpResponse
 from PIL import Image
 
+from accounts.forms import LoginForm, SignupForm
+
 
 def profile_image(request:HttpRequest) -> HttpResponse:
     canvas = Image.new("RGBA", (256, 256), (135,117,179,300))
@@ -15,7 +17,7 @@ def profile_image(request:HttpRequest) -> HttpResponse:
     return response
 
 
-login = LoginView.as_view(template_name="accounts/login_form.html")
+login = LoginView.as_view(form_class=LoginForm, template_name="accounts/login_form.html")
 
 #
 # signup = CreateView.as_view(
@@ -26,12 +28,12 @@ login = LoginView.as_view(template_name="accounts/login_form.html")
 
 def signup(request):
     if request.method == "POST":
-        form = UserCreationForm(request.POST, request.FILES)
+        form = SignupForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect("accounts:login")
     else:
-        form = UserCreationForm()
+        form = SignupForm()
     return render(request, "accounts/signup_form.html",{"form": form})
 
 
