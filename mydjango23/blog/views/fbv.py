@@ -1,8 +1,9 @@
 from django.contrib import messages
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from blog.forms import PostForm
-from blog.models import Post
+from django.views.generic import CreateView
+from blog.forms import PostForm, SubscriberForm
+from blog.models import Post, Subscriber
 
 
 def post_list(request:HttpRequest) -> HttpResponse:
@@ -57,3 +58,4 @@ def post_delete(request:HttpRequest, pk:int) -> HttpResponse:
     return render(request, "blog/post_confirm_delete.html", {"post": post})
 
 
+subscriber_new = CreateView.as_view(model=Subscriber, form_class = SubscriberForm)
