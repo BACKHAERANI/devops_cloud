@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class TimeStampeModel(models.Model):
@@ -30,13 +31,16 @@ class Shop(TimeStampeModel):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse("shop:shop_detail", args=[self.shop.pk])
+
     class Meta:
         ordering = ["name"]
 
 
 class Review(TimeStampeModel):
     shop = models.ForeignKey(Shop, on_delete=models.CASCADE)
-    name = models.CharField(max_length=20, unique=True)
+    name = models.CharField(max_length=20)
     message = models.TextField()
 
     def __str__(self):
