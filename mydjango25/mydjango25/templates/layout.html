@@ -7,19 +7,31 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block page_tile %}란란의 웹서비스{% endblock %}</title>
-{# 디포르 cdn 버전 #}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
+    {# 디포르 cdn 버전 #}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
 </head>
 <body>
 <div class="container">
-<h1>란란의 웹서비스</h1>
-{% block content %}
+    <h1>란란의 웹서비스</h1>
 
-{% endblock %}
+    <ul>
+        {% if not user.is_authenticated %}
+            <li><a href="{% url "accounts:login" %}">로그인</a></li>
+            <li><a href="{% url "accounts:signup" %}">회원가입</a></li>
+        {% else %}
+             <li><a href="{% url "accounts:profile" %}">프로필</a></li>
+            <li><a href="{% url "accounts:logout" %}">로그아웃</a></li>
+        {% endif %}
+    </ul>
+<br>
 
-<hr>
-&copy; 란란컴퍼니 2021 이번엔 해내야 한다
+    {% block content %}
+
+    {% endblock %}
+
+    <hr>
+    &copy; 란란컴퍼니 2021 이번엔 해내야 한다
 </div>
 </body>
 </html>
