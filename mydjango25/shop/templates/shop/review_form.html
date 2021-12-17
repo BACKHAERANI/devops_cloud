@@ -1,0 +1,7 @@
+{% extends "shop/layout.html" %}
+
+
+{% block content %}
+    <form action="" method="post" enctype="multipart/form-data">
+    {% include "_form.html" with submit_label="리뷰저장" %}   {# submit_label=에서 띄어쓰기하지않기 #}
+{% endblock %}

@@ -17,4 +17,17 @@
     {{ shop.description | default:"설명이 없습니다." |linebreaks }}    {# linebreaks를 마지막에 해줘야 default와 같이 적용가능. #}
     <hr>
     {{ shop.created_at | timesince }}전
+
+    <hr>
+    <h4>리뷰</h4>
+    <a href="{% url "shop:review_new" shop.pk  %}" class="btn btn-info">리뷰쓰기</a>
+    {% for review in  shop.review_set.all %}
+        <div>
+        {{ review.message }}
+        by  {{ review.user }}
+        at  {{ review.created_at | timesince }}
+        </div>
+    {% empty %}
+        등록된 리뷰가 없습니다.
+    {% endfor %}
 {% endblock %}

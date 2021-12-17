@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django.urls import reverse
 
 
 class TimestampedModel(models.Model):
@@ -37,6 +38,9 @@ class Shop(TimestampedModel):
         ordering = ["-id"]
         verbose_name = "가게"
         verbose_name_plural = "가게 목록"
+
+    def get_absolute_url(self):
+        return reverse("shop:shop_detail", args=[self.pk])
 
 
 class Review(TimestampedModel):
