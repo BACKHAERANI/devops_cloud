@@ -1,5 +1,6 @@
 {% extends "shop/layout.html" %}
 
+{% load bootstrap5 %}
 {% block content %}
     <p>
     {% for category in category_list %}
@@ -23,6 +24,6 @@
         {% endfor %}
         </tbody>
     </table>
-
+{% bootstrap_pagination page_obj %}
 {% endblock %}
 
