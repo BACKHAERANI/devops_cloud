@@ -1,0 +1,20 @@
+{% extends "shop/layout.html" %}
+
+
+{% block content %}
+
+    <h3>{{ shop.name }}</h3>
+    <p>
+    {% for tag in shop.tag_set.all %}
+        {{ tag.name }}
+        {% empty %}
+        등록된 태그가 없습니다.
+    {% endfor %}
+    </p>
+{% if shop.photo %}
+    <img src="{{ shop.photo.url }}" alt ="{{ shop.name }}"/>
+{% endif%}
+    {{ shop.description | default:"설명이 없습니다." |linebreaks }}    {# linebreaks를 마지막에 해줘야 default와 같이 적용가능. #}
+    <hr>
+    {{ shop.created_at | timesince }}전
+{% endblock %}

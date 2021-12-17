@@ -14,6 +14,9 @@ class ShopListView(ListView):
 
 shop_list = ShopListView.as_view(model=Shop,)
 
+shop_detail = DetailView.as_view(model=Shop,)
+
+
 
 
 
