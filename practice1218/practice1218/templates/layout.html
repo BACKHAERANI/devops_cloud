@@ -1,0 +1,27 @@
+{% load bootstrap5 %}
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block page_title %}lovely baking{% endblock %}</title>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+<div class="container">
+    <thead>
+    <td>세상의 모든 빵순이들을 위한</td>
+    <h1> 🍞🥐lovely baking🥖🥯</h1>
+    </thead>
+
+    {% block content %}
+    {% endblock %}
+
+    <hr>
+    &copy; rani love baking
+</div>
+</body>
+</html>
