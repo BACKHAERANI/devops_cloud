@@ -6,7 +6,7 @@
 <h2>{{ star.name }}</h2>
 <p>
 태그:
-{% for tag in tag_detail %}
+{% for tag in tag_list %}
     <a href="{% url "wannaone:tag_detail" tag.name %}" class="badge btn-danger">
     {{ tag.name }}
     </a>
@@ -23,6 +23,6 @@
 
     </ui>
 
-
+<a href ="{% url "wannaone:star_list" %}">목록으로</a>
 
 {% endblock %}

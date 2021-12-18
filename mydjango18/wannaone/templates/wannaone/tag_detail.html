@@ -2,11 +2,13 @@
 
 {% block content %}
     <h2>{{ tag_name }}</h2>
-    <div>
-        {% for star in star_list %}
+
+    {% for star in star_list %}
+        <div>
             <a href="{% url "wannaone:star_detail" star.pk %}">
                 {{ star.name }}
             </a>
-        {% endfor %}
-    </div>
+        </div>
+    {% endfor %}
+
 {% endblock %}
