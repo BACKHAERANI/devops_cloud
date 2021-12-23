@@ -2,7 +2,8 @@ import { Input } from 'antd';
 import { useState } from 'react';
 import Axios from 'axios';
 import jsonpAdapter from 'axios-jsonp';
-import { List, Avatar } from 'antd';
+import { List, Card } from 'antd';
+
 
 function MelonSearch() {
   const [query, setQuery] = useState('');
@@ -64,19 +65,21 @@ function MelonSearch() {
       />
       {songList.map((song) => {
         return (
-          <List
-    itemLayout="horizontal"
-    dataSource={songList}
-    renderItem={(song) => (
-      <List.Item>
-        <List.Item.Meta
-          avatar={<Avatar src={song.ALBUMIMG} />}
-          title={song.SONGNAME}
-          description={song.ARTISTNAME}
-        />
-      </List.Item>
-        )}
-        />
+      
+            <List
+              grid={{ gutter: 16, column: 2 }}
+              dataSource={songList}
+              renderItem={(song)=> (
+                <List.Item>
+                  <Card title=
+                  {<img src={song.ALBUMIMG}/>}>
+                  {song.ARTISTNAME}
+                    {song.SONGNAME}
+                    
+                    </Card>
+                </List.Item>
+              )}
+            />
         );
     })}
     </div>
