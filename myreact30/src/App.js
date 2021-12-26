@@ -3,6 +3,7 @@ import PageCounter from './pages/PageCounter';
 import PageLotto from "./pages/PageLotto";
 import TopNav from "./components/TopNav";
 import { useState } from "react";
+import PageYoutube from "./pages/PageYoutube";
 
 function App(){
   const [pageName, setPageName] =useState('about');
@@ -17,6 +18,7 @@ function App(){
   {pageName ==="about" && <PageAbout/>}
   {pageName ==="counter" && <PageCounter />}
   {pageName ==="Lotto" && <PageLotto />}
+  {pageName === "playlist" && <PageYoutube />}
 </div>
  );
 }

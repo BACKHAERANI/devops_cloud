@@ -14,7 +14,7 @@ function TopNav({changePageName}){
                 <a onClick={() => changePageName("Lotto")}>Lotto</a>
             </li>
             <li> 
-                <a onClick={() => changePageName("PlayYoutube")}>PlayYoutube</a>
+                <a onClick={() => changePageName("Playlist")}>Play,Youtube</a>
             </li>
         </ul>
     );
