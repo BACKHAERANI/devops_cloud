@@ -4,7 +4,9 @@ import React from 'react';
 
 
 
-function Playlist() {}
+function Playlist() {
+    
+}
 
 
 export default Playlist;
