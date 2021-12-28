@@ -8,23 +8,27 @@ import Profilelist from "./Profile.json";
 function App() {
   const [pageName, setPageName] = useState();
   const [profilePage, setProfilePage] = useState("해란");
+
   return (
     <div>
       <TopNav changePage={setPageName} />
       {pageName === "Lotto" && <PageLotto />}
 
       {pageName === "Profile" &&
-        Profilelist.map((list) => {
+        Profilelist.map((list, index) => {
           if (profilePage === list.name) {
             return (
-              <ProfileCard
-                changePage={setProfilePage}
-                name={list.name}
-                role={list.role}
-                facebook_url={list.facebook_url}
-                email={list.email}
-                profileImage={profileImage}
-              />
+              <div className={`member${index % 4}`}>
+                <ProfileCard
+                  member={list.style_id}
+                  changePage={setProfilePage}
+                  name={list.name}
+                  role={list.role}
+                  facebook_url={list.facebook_url}
+                  email={list.email}
+                  profileImage={profileImage}
+                />
+              </div>
             );
           }
         })}

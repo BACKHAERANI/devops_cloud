@@ -16,7 +16,7 @@ function ProfileCard({
   email,
 }) {
   return (
-    <body>
+    <div>
       <section>
         <nav className="menu">
           <a href="#">
@@ -51,9 +51,11 @@ function ProfileCard({
           <a onClick={() => changePage("찬들")}></a>
           <a onClick={() => changePage("유림")}></a>
           <a onClick={() => changePage("예린")}></a>
+          <a onClick={() => changePage("진아")}></a>
+          <a onClick={() => changePage("은지")}></a>
         </nav>
       </section>
-    </body>
+    </div>
   );
 }
 export default ProfileCard;
