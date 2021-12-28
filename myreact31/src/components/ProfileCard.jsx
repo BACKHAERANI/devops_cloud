@@ -1,4 +1,3 @@
-import profileImage from "./member1.jpg";
 import "./ProfileCard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,7 +7,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 
-function ProfileCard({ profileImage, name, role, facebook_url, email }) {
+function ProfileCard({
+  changePage,
+  profileImage,
+  name,
+  role,
+  facebook_url,
+  email,
+}) {
   return (
     <body>
       <section>
@@ -41,10 +47,10 @@ function ProfileCard({ profileImage, name, role, facebook_url, email }) {
           </li>
         </ul>
         <nav class="others">
-          <a href="member1.html" class="on"></a>
-          <a href="member2.html"></a>
-          <a href="member3.html"></a>
-          <a href="member4.html"></a>
+          <a onClick={() => changePage("Profile1")}></a>
+          <a onClick={() => changePage("Profile2")}></a>
+          <a onClick={() => changePage("Profile3")}></a>
+          <a onClick={() => changePage("Profile4")}></a>
         </nav>
       </section>
     </body>
