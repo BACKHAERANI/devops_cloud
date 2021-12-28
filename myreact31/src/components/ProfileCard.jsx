@@ -47,10 +47,10 @@ function ProfileCard({
           </li>
         </ul>
         <nav class="others">
-          <a onClick={() => changePage("Profile1")}></a>
-          <a onClick={() => changePage("Profile2")}></a>
-          <a onClick={() => changePage("Profile3")}></a>
-          <a onClick={() => changePage("Profile4")}></a>
+          <a onClick={() => changePage("해란")}></a>
+          <a onClick={() => changePage("찬들")}></a>
+          <a onClick={() => changePage("유림")}></a>
+          <a onClick={() => changePage("예린")}></a>
         </nav>
       </section>
     </body>

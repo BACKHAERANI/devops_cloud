@@ -1,0 +1,28 @@
+[
+    {
+        "name": "해란",
+        "role": "파이썬 장고 자바스크립트 리액트를 해보는 중",
+        "facebook_url": "idg9833@naver.com",
+        "email": "idg9833@naver.com"
+    },
+    {
+        "name": "찬들",
+        "role": "천재만재",
+        "facebook_url": "찬드리@naver.com",
+        "email": "찬드리@naver.com"
+    },
+    {
+        "name": "유림",
+        "role": "세종 다이어터",
+        "facebook_url": "유리미@naver.com",
+        "email": "유리미@naver.com"
+    },
+    {
+        "name": "예린",
+        "role": "맛집 탐방러버",
+        "facebook_url": "예리니@naver.com",
+        "email": "예리니@naver.com"
+    }
+    
+]
+
