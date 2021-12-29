@@ -2,11 +2,11 @@ import PageLotto from "./PageLotto ";
 import ProfileCard from "./components/ProfileCard";
 import { useState } from "react";
 import TopNav from "./TopNav";
-import Profilelist from "./Profile.json";
+import profilelist from "./Profile.json";
 
 function App() {
   const [pageName, setPageName] = useState();
-  const [profilePage, setProfilePage] = useState(Profilelist[0].name);
+  const [profilePage, setProfilePage] = useState(profilelist[0].name);
 
   return (
     <div>
@@ -14,7 +14,7 @@ function App() {
       {pageName === "Lotto" && <PageLotto />}
 
       {pageName === "Profile" &&
-        Profilelist.map((list, index) => {
+        profilelist.map((list, index) => {
           if (profilePage === list.name) {
             return (
               <div className={`member${index % 4}`}>
@@ -27,8 +27,13 @@ function App() {
                   profileImage={list.image}
                 >
                   <nav>
-                    {Profilelist.map((list) => {
-                      return <a onClick={() => setProfilePage(list.name)}></a>;
+                    {profilelist.map((list) => {
+                      return (
+                        <a
+                          className={profilePage === list.name ? "on" : "off"}
+                          onClick={() => setProfilePage(list.name)}
+                        ></a>
+                      );
                     })}
                   </nav>
                 </ProfileCard>
