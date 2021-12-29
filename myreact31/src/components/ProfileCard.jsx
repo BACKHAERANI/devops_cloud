@@ -14,6 +14,7 @@ function ProfileCard({
   role,
   facebook_url,
   email,
+  children,
 }) {
   return (
     <div>
@@ -46,7 +47,8 @@ function ProfileCard({
             <span>{email}</span>
           </li>
         </ul>
-        <nav class="others">
+        <nav className="others">
+          {/* {children} */}
           <a onClick={() => changePage("해란")}></a>
           <a onClick={() => changePage("찬들")}></a>
           <a onClick={() => changePage("유림")}></a>
