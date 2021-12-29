@@ -25,7 +25,13 @@ function App() {
                   facebook_url={list.facebook_url}
                   email={list.email}
                   profileImage={list.image}
-                />
+                >
+                  <nav>
+                    {Profilelist.map((list) => {
+                      return <a onClick={() => setProfilePage(list.name)}></a>;
+                    })}
+                  </nav>
+                </ProfileCard>
               </div>
             );
           }

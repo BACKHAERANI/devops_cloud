@@ -47,15 +47,7 @@ function ProfileCard({
             <span>{email}</span>
           </li>
         </ul>
-        <nav className="others">
-          {/* {children} */}
-          <a onClick={() => changePage("해란")}></a>
-          <a onClick={() => changePage("찬들")}></a>
-          <a onClick={() => changePage("유림")}></a>
-          <a onClick={() => changePage("예린")}></a>
-          <a onClick={() => changePage("진아")}></a>
-          <a onClick={() => changePage("은지")}></a>
-        </nav>
+        <nav className="others">{children}</nav>
       </section>
     </div>
   );
