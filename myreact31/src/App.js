@@ -6,7 +6,7 @@ import Profilelist from "./Profile.json";
 
 function App() {
   const [pageName, setPageName] = useState();
-  const [profilePage, setProfilePage] = useState("해란");
+  const [profilePage, setProfilePage] = useState(Profilelist[0].name);
 
   return (
     <div>
