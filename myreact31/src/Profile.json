@@ -1,44 +1,50 @@
 [
-    {   "style_id": "member0",
+    {
         "name": "해란",
         "role": "파이썬 장고 자바스크립트 리액트를 해보는 중",
         "facebook_url": "idg9833@naver.com",
-        "email": "idg9833@naver.com"
+        "email": "idg9833@naver.com",
+        "image" : "/profile-images/member1.jpg" 
     },
     {
-        "style_id": "member1",
+
         "name": "찬들",
         "role": "천재만재",
         "facebook_url": "찬드리@naver.com",
-        "email": "찬드리@naver.com"
+        "email": "찬드리@naver.com",
+        "image" : "/profile-images/member2.jpg" 
     },
     {
-        "style_id": "member2",
+   
         "name": "유림",
         "role": "세종 다이어터",
         "facebook_url": "유리미@naver.com",
-        "email": "유리미@naver.com"
+        "email": "유리미@naver.com",
+        "image" : "/profile-images/member3.jpg" 
     },
     {
-        "style_id": "member3",
+
         "name": "예린",
         "role": "맛집 탐방러버",
         "facebook_url": "예리니@naver.com",
-        "email": "예리니@naver.com"
+        "email": "예리니@naver.com",
+        "image" : "/profile-images/member4.jpg" 
     },
     {
-        "style_id": "member4",
+  
         "name": "진아",
         "role": "---휴가---",
         "facebook_url": "진아@naver.com",
-        "email": "진아@naver.com"
+        "email": "진아@naver.com",
+        "image" : "/profile-images/member1.jpg" 
     },
     {
-        "style_id": "member5",
+
         "name": "은지",
         "role": "알 수 없음",
         "facebook_url": "은지@naver.com",
-        "email": "은지@naver.com"
+        "email": "은지@naver.com",
+        "image" : "/profile-images/member2.jpg" 
     }
 ]
 
