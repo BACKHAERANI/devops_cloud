@@ -7,15 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 
-function ProfileCard({
-  changePage,
-  profileImage,
-  name,
-  role,
-  facebook_url,
-  email,
-  children,
-}) {
+function ProfileCard({ image, name, role, facebook_url, email, children }) {
   return (
     <div>
       <section>
@@ -28,7 +20,7 @@ function ProfileCard({
           </a>
         </nav>
         <article className="profile">
-          <img src={profileImage} />
+          <img src={image} />
           <h1>{name}</h1>
           <h2>{role}</h2>
           <a href="#" className="btnView">

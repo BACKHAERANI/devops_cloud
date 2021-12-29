@@ -3,10 +3,25 @@ import ProfileCard from "./components/ProfileCard";
 import { useState } from "react";
 import TopNav from "./TopNav";
 import profilelist from "./Profile.json";
+import Axios from "axios";
 
 function App() {
   const [pageName, setPageName] = useState();
   const [profilePage, setProfilePage] = useState(profilelist[0].name);
+
+  // useEffect(() => {
+  //   Axios.get(
+  //     "https://classdevopscloud.blob.core.windows.net/data/profile-list.json"
+  //   )
+  //     .then((reponse) => {
+  //       // reponse는 axios 객체
+  //       // response.data => 응답 내용
+  //       setProfileList(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }, []);
 
   return (
     <div>
@@ -14,24 +29,17 @@ function App() {
       {pageName === "Lotto" && <PageLotto />}
 
       {pageName === "Profile" &&
-        profilelist.map((list, index) => {
-          if (profilePage === list.name) {
+        profilelist.map((profile, index) => {
+          if (profilePage === profile.name) {
             return (
               <div className={`member${index % 4}`}>
-                <ProfileCard
-                  changePage={setProfilePage}
-                  name={list.name}
-                  role={list.role}
-                  facebook_url={list.facebook_url}
-                  email={list.email}
-                  profileImage={list.image}
-                >
+                <ProfileCard changePage={setProfilePage} {...profile}>
                   <nav>
-                    {profilelist.map((list) => {
+                    {profilelist.map((profile) => {
                       return (
                         <a
-                          className={profilePage === list.name ? "on" : "off"}
-                          onClick={() => setProfilePage(list.name)}
+                          className={profilePage === profile.name ? "on" : ""}
+                          onClick={() => setProfilePage(profile.name)}
                         ></a>
                       );
                     })}
