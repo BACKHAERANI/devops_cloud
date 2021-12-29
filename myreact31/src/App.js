@@ -1,27 +1,27 @@
 import PageLotto from "./PageLotto ";
 import ProfileCard from "./components/ProfileCard";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TopNav from "./TopNav";
-import profilelist from "./Profile.json";
 import Axios from "axios";
 
 function App() {
   const [pageName, setPageName] = useState();
-  const [profilePage, setProfilePage] = useState(profilelist[0].name);
+  const [profilePage, setProfilePage] = useState("진");
+  const [profilelist, setProfileList] = useState([]);
 
-  // useEffect(() => {
-  //   Axios.get(
-  //     "https://classdevopscloud.blob.core.windows.net/data/profile-list.json"
-  //   )
-  //     .then((reponse) => {
-  //       // reponse는 axios 객체
-  //       // response.data => 응답 내용
-  //       setProfileList(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }, []);
+  useEffect(() => {
+    Axios.get(
+      "https://classdevopscloud.blob.core.windows.net/data/profile-list.json"
+    )
+      .then((response) => {
+        // reponse는 axios 객체
+        // response.data => 응답 내용
+        setProfileList(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
   return (
     <div>

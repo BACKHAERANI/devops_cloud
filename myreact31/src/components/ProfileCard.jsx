@@ -5,9 +5,17 @@ import {
   faEnvelope,
   faStickyNote,
 } from "@fortawesome/free-solid-svg-icons";
-import { faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
 
-function ProfileCard({ image, name, role, facebook_url, email, children }) {
+function ProfileCard({
+  unique_id,
+  mbti,
+  instagram_url,
+  profile_image_url,
+  name,
+  role,
+  children,
+}) {
   return (
     <div>
       <section>
@@ -20,24 +28,25 @@ function ProfileCard({ image, name, role, facebook_url, email, children }) {
           </a>
         </nav>
         <article className="profile">
-          <img src={image} />
+          <img src={profile_image_url} />
           <h1>{name}</h1>
           <h2>{role}</h2>
+          <h2>{mbti}</h2>
           <a href="#" className="btnView">
             VIEW MORE
           </a>
         </article>
         <ul className="contact">
           <li>
-            <FontAwesomeIcon icon={faFacebook} className="icon" />
+            <FontAwesomeIcon icon={faInstagram} className="icon" />
             <span>
-              <a href="#">{facebook_url}</a>{" "}
+              <a href="#">{instagram_url}</a>{" "}
             </span>
           </li>
-          <li>
+          {/* <li>
             <FontAwesomeIcon icon={faEnvelope} />
             <span>{email}</span>
-          </li>
+          </li> */}
         </ul>
         <nav className="others">{children}</nav>
       </section>

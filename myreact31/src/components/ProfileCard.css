@@ -162,6 +162,11 @@ section nav.others a:nth-of-type(6) {
   box-shadow: 5px 5px 10px rgba(85, 245, 178, 0.7);
 }
 
+section nav.others a:nth-of-type(7) {
+  background-color: #ff80df;
+  box-shadow: 5px 5px 10px rgba(255, 128, 233, 0.7);
+}
+
 div.member0 {
   background-color: #ebfaff;
 }
