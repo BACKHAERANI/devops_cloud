@@ -3,6 +3,17 @@ import Axios from "axios";
 
 function PageProfile() {
   const [profileList, setProfileList] = useState([]);
+  const handleRefresh = () => {
+    Axios.get(
+      "https://classdevopscloud.blob.core.windows.net/data/profile-list.json"
+    )
+      .then((response) => {
+        setProfileList(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   useEffect(() => {
     Axios.get(
@@ -20,6 +31,7 @@ function PageProfile() {
     <div>
       <h2>PageProfile</h2>
       <button onClick={() => setProfileList([])}>clear</button>
+      <button onClick={handleRefresh}>새로고침</button>
 
       {profileList.length == 0 && <h3>등록된 프로필이 없습니다.</h3>}
 
