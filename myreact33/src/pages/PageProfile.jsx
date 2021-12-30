@@ -11,13 +11,14 @@ function PageProfile() {
       "https://classdevopscloud.blob.core.windows.net/data/profile-list.json"
     )
       .then((response) => {
-        const profileList = response.data.map((profile) => ({
-          ...profile,
-          unique: profile.unique_id,
-          profileimageurl: profile.profile_image_url,
-          instagramurl: profile.instagram_url,
-        }));
-        setProfileList(profileList);
+        setProfileList(
+          response.data.map((profile) => ({
+            ...profile,
+            unique: profile.unique_id,
+            profileimageurl: profile.profile_image_url,
+            instagramurl: profile.instagram_url,
+          }))
+        );
       })
       .catch((error) => {
         setCheckError(error);
