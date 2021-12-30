@@ -13,7 +13,9 @@ function PageProfile() {
       .then((response) => {
         setProfileList(
           response.data.map((profile) => ({
-            ...profile,
+            name: profile.name,
+            role: profile.role,
+            mbti: profile.mbti,
             unique: profile.unique_id,
             profileimageurl: profile.profile_image_url,
             instagramurl: profile.instagram_url,
