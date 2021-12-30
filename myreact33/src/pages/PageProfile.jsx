@@ -8,7 +8,13 @@ function PageProfile() {
       "https://classdevopscloud.blob.core.windows.net/data/profile-list.json"
     )
       .then((response) => {
-        setProfileList(response.data);
+        const profileList = response.data.map((profile) => ({
+          ...profile,
+          unique: profile.unique_id,
+          profileimageurl: profile.profile_image_url,
+          instagramurl: profile.instagram_url,
+        }));
+        setProfileList(profileList);
       })
       .catch((error) => {
         console.error(error);
@@ -20,7 +26,13 @@ function PageProfile() {
       "https://classdevopscloud.blob.core.windows.net/data/profile-list.json"
     )
       .then((response) => {
-        setProfileList(response.data);
+        const profileList = response.data.map((profile) => ({
+          ...profile,
+          unique: profile.unique_id,
+          profileimageurl: profile.profile_image_url,
+          instagramurl: profile.instagram_url,
+        }));
+        setProfileList(profileList);
       })
       .catch((error) => {
         console.error(error);
@@ -39,12 +51,12 @@ function PageProfile() {
         return (
           <>
             <h3>
-              [{member.unique_id}]{member.name}
+              [{member.unique}]{member.name}
             </h3>
             <ul>
-              <img src={member.profile_image_url} />
+              <img src={member.profileimageurl} />
               <li>{member.role}</li>
-              <li>{member.instagram_url}</li>
+              <li>{member.instagramurl}</li>
               <li>{member.mbti}</li>
             </ul>
           </>
