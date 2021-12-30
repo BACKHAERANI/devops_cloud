@@ -36,7 +36,9 @@ function PageProfile() {
 
       <button onClick={handleRefresh}>새로고침</button>
 
-      {profileList.length == 0 && <h3>등록된 프로필이 없습니다.</h3>}
+      {profileList.length == 0 && !checkError && (
+        <h3>등록된 프로필이 없습니다.</h3>
+      )}
 
       {checkError && <h3>오류가 발생했습니다. 잠시후 다시 시도해주세요.</h3>}
 
