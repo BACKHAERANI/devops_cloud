@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Counter from "./Counter3";
+import Counter from "./Counter2";
 
 function App() {
   return <Counter />;
