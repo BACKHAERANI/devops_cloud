@@ -1,5 +1,23 @@
 import { useReducer } from "react";
 
+function reducer(prevState, action) {
+  const { type } = action;
+  if (type === "GENERATE_NUMBERS") {
+    let randomNumber = [];
+
+    for (let i = 0; i < 7; i++) {
+      let number = Math.floor(Math.random() * 45) + 1;
+      if (randomNumber.indexOf(number) === -1) {
+        randomNumber.push(number);
+      } else {
+        i--;
+      }
+    }
+    randomNumber.sort((a, b) => a - b);
+    return { ...prevState, numbers: randomNumber };
+  }
+}
+
 function SevenNumbers() {
   const [state, dispatch] = useReducer(reducer, {
     numbers: [0, 0, 0, 0, 0, 0, 0],
@@ -17,7 +35,7 @@ function SevenNumbers() {
   return (
     <div>
       <h2>7개의 숫자</h2>
-      {numbers.map((number, index) => {
+      {state.numbers.map((number, index) => {
         return (
           <div
             style={{ ...defaultStyle, backgroundColor: state.colors[index] }}
@@ -26,6 +44,10 @@ function SevenNumbers() {
           </div>
         );
       })}
+      <hr />
+      <button onClick={() => dispatch({ type: "GENERATE_NUMBERS" })}>
+        랜덤뽑기
+      </button>
     </div>
   );
 }
