@@ -1,8 +1,8 @@
 import { useState } from "react";
-import SevelNumbers from "./SevelNumbers";
+import SevenNumbers from "./SevenNumbers";
 
 function App() {
-  return <SevelNumbers />;
+  return <SevenNumbers />;
 }
 
 export default App;

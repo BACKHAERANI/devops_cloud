@@ -1,9 +1,7 @@
-import { useState } from "react";
+import { useReducer } from "react";
 
-function SevelNumbers() {
-  // const [state, setState] = useState();
-  // const { numbers, colors } = state;
-  const [state, setState] = useState({
+function SevenNumbers() {
+  const [state, dispatch] = useReducer(reducer, {
     numbers: [0, 0, 0, 0, 0, 0, 0],
     colors: [
       "#1B62BF",
@@ -15,7 +13,6 @@ function SevelNumbers() {
       "pink",
     ],
   });
-  const { numbers, colors } = state;
 
   return (
     <div>
@@ -44,4 +41,4 @@ const defaultStyle = {
   userSelect: "none",
 };
 
-export default SevelNumbers;
+export default SevenNumbers;
