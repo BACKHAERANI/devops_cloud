@@ -1,31 +1,34 @@
 import { useState } from "react";
 
 function Counter4() {
-  const [value, setValue] = useState(0);
-  const [color, setColor] = useState("red");
+  // const [value, setValue] = useState(0);
+  // const [color, setColor] = useState("red");
+
+  const [state, setState] = useState({ value: 0, color: "red" });
+  const { value, color } = state;
 
   const handlePlus = () => {
     // setValue(value + 1);
-    setValue((preValue) => preValue + 1);
+    setState((prevState) => ({ ...prevState, value: prevState.value + 1 }));
   };
   const handleMinus = () => {
     //setValue(value - 1);
-    setValue((preValue) => preValue - 1);
+    setState((prevState) => ({ ...prevState, value: prevState.value - 1 }));
   };
 
   const handlegreen = () => {
     // setColor("green");
-    setColor(() => "green");
+    setState((prevState) => ({ ...prevState, color: "green" }));
   };
 
   const handleblue = () => {
     //setColor("blue");
-    setColor(() => "blue");
+    setState((prevState) => ({ ...prevState, color: "blue" }));
   };
 
   const handlered = () => {
     //setColor("red");
-    setColor(() => "red");
+    setState((prevState) => ({ ...prevState, color: "red" }));
   };
 
   return (
