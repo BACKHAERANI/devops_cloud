@@ -15,6 +15,11 @@ function reducer(prevState, action) {
     }
     randomNumber.sort((a, b) => a - b);
     return { ...prevState, numbers: randomNumber };
+  } else if (type === "SHUFFLE_NUMBERS") {
+    return {
+      ...prevState,
+      numbers: prevState.numbers.sort(() => Math.random() - Math.random()),
+    };
   }
 }
 
@@ -47,6 +52,9 @@ function SevenNumbers() {
       <hr />
       <button onClick={() => dispatch({ type: "GENERATE_NUMBERS" })}>
         랜덤뽑기
+      </button>
+      <button onClick={() => dispatch({ type: "SHUFFLE_NUMBERS" })}>
+        랜덤섞기
       </button>
     </div>
   );
