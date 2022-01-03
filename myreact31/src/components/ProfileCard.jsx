@@ -8,7 +8,6 @@ import {
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 function ProfileCard({
-  unique_id,
   mbti,
   instagram_url,
   profile_image_url,
@@ -43,10 +42,6 @@ function ProfileCard({
               <a href="#">{instagram_url}</a>{" "}
             </span>
           </li>
-          {/* <li>
-            <FontAwesomeIcon icon={faEnvelope} />
-            <span>{email}</span>
-          </li> */}
         </ul>
         <nav className="others">{children}</nav>
       </section>
