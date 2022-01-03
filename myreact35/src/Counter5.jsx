@@ -1,44 +1,63 @@
 import { useReducer } from "react";
 
-function reducer(state, action) {
-  switch (action.type) {
-    case "PLUS":
-      return state + 1;
-    case "MINUS":
-      return state - 1;
-    default:
-      return state;
+function reducer(prevstate, action) {
+  const { type, amount, color } = action;
+  if (type === "PLUS") {
+    return { ...prevstate, value: prevstate.value + amount };
+  } else if (type === "MINUS") {
+    return { ...prevstate, value: prevstate.value - amount };
+  } else if (type === "CHANGE_COLOR") {
+    return { ...prevstate, color };
   }
 }
 
 function Counter5() {
-  const [number, dispatch] = useReducer(reducer, 0);
+  const [state, dispatch] = useReducer(reducer, {
+    value: 0,
+    color: "red",
+  });
 
   const handlePlus = () => {
-    dispatch({ type: "PLUS" });
+    dispatch({ type: "PLUS", amount: 1 });
   };
 
   const handleMinus = () => {
-    dispatch({ type: "MINUS" });
+    dispatch({ type: "MINUS", amount: 1 });
   };
 
-  // const handlegreen = () => {
-  //   dispatch({ type: "color" });
-  // };
+  const handleColor = (color) => {
+    dispatch({ type: "CHANGE_COLOR", color: color });
+  };
 
   return (
-    <div>
-      <h1>Counter5</h1>
-      <span>{number}</span>
+    <>
+      <h2>Counter6</h2>
+
+      <div style={{ ...defaultStyle, backgroundColor: state.color }}>
+        {state.value}
+      </div>
+
       <hr />
-      <button onClick={handlePlus}>+1</button>
-      <button onClick={handleMinus}>-1</button>
-      <hr />
-      {/* <button onClick={handlegreen}>초록</button> */}
-      {/* <button onClick={handleblue}>파랑</button>
-      <button onClick={handlered}>빨강</button> */}
-    </div>
+
+      <button onClick={handlePlus}>Plus</button>
+      <button onClick={handleMinus}>Minus</button>
+
+      <button onClick={() => handleColor("red")}>Red</button>
+      <button onClick={() => handleColor("green")}>Green</button>
+      <button onClick={() => handleColor("blue")}>Blue</button>
+    </>
   );
 }
+
+const defaultStyle = {
+  width: "100px",
+  height: "100px",
+  borderRadius: "50px",
+  lineHeight: "100px",
+  textAlign: "center",
+  display: "inline-block",
+  fontSize: "3rem",
+  userSelect: "none",
+};
 
 export default Counter5;
