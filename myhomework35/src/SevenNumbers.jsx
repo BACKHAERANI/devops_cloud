@@ -20,6 +20,11 @@ function reducer(prevState, action) {
       ...prevState,
       numbers: prevState.numbers.sort(() => Math.random() - Math.random()),
     };
+  } else if (type === "SHUFFLE_COLORS") {
+    return {
+      ...prevState,
+      colors: prevState.colors.sort(() => Math.random() - Math.random()),
+    };
   }
 }
 
@@ -55,6 +60,9 @@ function SevenNumbers() {
       </button>
       <button onClick={() => dispatch({ type: "SHUFFLE_NUMBERS" })}>
         랜덤섞기
+      </button>
+      <button onClick={() => dispatch({ type: "SHUFFLE_COLORS" })}>
+        컬러섞기
       </button>
     </div>
   );
