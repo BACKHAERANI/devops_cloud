@@ -68,6 +68,7 @@ function SevenNumbers1({ title }) {
       numbers: prevState.numbers.filter(
         (number, index) => circleIndex !== index,
       ),
+      colors: prevState.colors.filter((color, index) => circleIndex !== index),
     }));
   };
 
