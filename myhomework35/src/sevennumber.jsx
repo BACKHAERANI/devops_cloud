@@ -63,12 +63,42 @@ function SevenNumbers() {
     });
   };
 
+  const changeCircleColor = (circleIndex) => {
+    setValue((prevState) => ({
+      ...prevState,
+      colors: prevState.colors.map((color, index) => {
+        if (circleIndex === index) {
+          return `#${Math.round(Math.random() * 0xffffff).toString(16)}`;
+        } else {
+          return color;
+        }
+      }),
+    }));
+  };
+
+  const removeCircle = (circleIndex) => {
+    setValue((prevState) => ({
+      ...prevState,
+      numbers: prevState.numbers.filter(
+        (number, index) => circleIndex !== index
+      ),
+      colors: prevState.colors.filter((color, index) => circleIndex !== index),
+    }));
+  };
+
   return (
     <div>
       <h2>7개의 숫자</h2>
       {value.numbers.map((number, index) => {
         return (
           <div
+            number={number}
+            onClick={() => changeCircleColor(index)}
+            onContextMenu={(e) => {
+              removeCircle(index);
+              e.preventDefault();
+              console.log("right clicked");
+            }}
             style={{ ...defaultStyle, backgroundColor: value.colors[index] }}
           >
             {number}
