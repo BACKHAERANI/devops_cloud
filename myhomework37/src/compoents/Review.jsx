@@ -6,7 +6,7 @@ function Review({ review }) {
     hover:border-green-300 
     hover:cursor-pointer"
     >
-      {review.content}
+      {review.content}_{review.score}
     </div>
   );
 }
