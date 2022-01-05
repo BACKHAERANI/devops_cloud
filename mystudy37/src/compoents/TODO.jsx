@@ -13,12 +13,17 @@ function TODO() {
     color: 'purple',
   });
 
-  // const [inputText, setInputText] = useState('');
-
   const removeTodo = (todoIndex) => {
     setTodoList((prevTodoList) =>
       prevTodoList.filter((_, index) => index !== todoIndex),
     );
+  };
+
+  const appendTodo = () => {
+    console.log('새로운 todo 추가');
+    const todo = { ...fieldValues };
+    setTodoList((prevTodoList) => [...prevTodoList, todo]);
+    clearFieldValues();
   };
 
   // const changedInputText = (e) => {
@@ -37,7 +42,11 @@ function TODO() {
   return (
     <div className="todo-list">
       <h1>TODOLIST</h1>
-      <TodoForm fieldValues={fieldValues} handleChange={handlechange} />
+      <TodoForm
+        fieldValues={fieldValues}
+        handleChange={handlechange}
+        handleSubmit={appendTodo}
+      />
       <hr />
       {JSON.stringify(fieldValues)}
 
@@ -47,12 +56,7 @@ function TODO() {
       >
         clear
       </button>
-      {/* <input
-        type="text"
-        value={inputText}
-        onChange={changedInputText}
-        onKeyPress={appedInputText}
-      /> */}
+
       {todoList.map((todo, index) => (
         <Todo todo={todo} onClick={() => removeTodo(index)}>
           {todo.content}
