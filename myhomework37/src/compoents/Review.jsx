@@ -1,10 +1,10 @@
 function Review({ review }) {
   return (
     <div
-      className="bg-blue-200 
-    hover:bg-blue-400 m-1 p-1 rounded-lg text-lg border-blue-200 border-2 
-    hover:border-blue-500 
-    hover:scale-105 cursor-pointer"
+      className="bg-white-200 
+    hover:bg-green-400 m-1 p-1  border-green-200 border-2 
+    hover:border-green-300 
+    hover:cursor-pointer"
     >
       {review.content}
     </div>

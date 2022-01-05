@@ -1,4 +1,4 @@
-import ReviewList from 'compoents/ReviewList ';
+import ReviewList from 'compoents/ReviewList';
 
 function PageReview() {
   return (
