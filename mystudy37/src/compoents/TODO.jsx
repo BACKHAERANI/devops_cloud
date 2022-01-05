@@ -4,7 +4,10 @@ import './Todo-list.css';
 import TodoForm from './TodoForm';
 import useFieldValues from 'hook/useFieldValues';
 
-const INITIAL_STATE = [{ content: '파이썬' }, { content: '자바스크립트' }];
+const INITIAL_STATE = [
+  { color: 'purple', content: '파이썬' },
+  { color: 'yellow', content: '자바스크립트' },
+];
 
 function TODO() {
   const [todoList, setTodoList] = useState(INITIAL_STATE);
@@ -59,7 +62,7 @@ function TODO() {
 
       {todoList.map((todo, index) => (
         <Todo todo={todo} onClick={() => removeTodo(index)}>
-          {todo.content}
+          {todo.content}_{todo.color}
         </Todo>
       ))}
     </div>

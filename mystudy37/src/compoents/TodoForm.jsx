@@ -11,8 +11,8 @@ function TodoForm({ fieldValues, handleChange, handleSubmit }) {
 
       <select onChange={handleChange} name="color" value={fieldValues.color}>
         <option>purple</option>
-        <option>Orange</option>
-        <option>Yellow</option>
+        <option>orange</option>
+        <option>yellow</option>
       </select>
 
       <input
