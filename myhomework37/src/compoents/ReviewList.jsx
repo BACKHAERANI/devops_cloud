@@ -2,6 +2,7 @@ import { useState } from 'react';
 import View from 'compoents/Review';
 import './Review-list.css';
 import usefieldValues from './hooks/useFieldValues';
+import ReviewForm from './ReviewForm';
 
 const Basic_Review = [
   { content: '스파이더맨...보고 싶었는데 볼 시간이 없었어요...' },
@@ -24,7 +25,7 @@ function ReviewList() {
     <div className="Review-list">
       <h1>ReviewList</h1>
       <hr />
-      <button onClick={appendReview}>New Review</button>
+      <ReviewForm handleSubmit={appendReview}>New Review</ReviewForm>
       <hr />
       {reviewList.map((review) => (
         <View review={review}>{review.content}</View>
