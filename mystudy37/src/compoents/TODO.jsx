@@ -8,7 +8,10 @@ const INITIAL_STATE = [{ content: '파이썬' }, { content: '자바스크립트'
 
 function TODO() {
   const [todoList, setTodoList] = useState(INITIAL_STATE);
-  const [fieldValues, handlechange] = useFieldValues();
+  const [fieldValues, handlechange, clearFieldValues] = useFieldValues({
+    content: '',
+    color: 'purple',
+  });
 
   // const [inputText, setInputText] = useState('');
 
@@ -34,9 +37,16 @@ function TODO() {
   return (
     <div className="todo-list">
       <h1>TODOLIST</h1>
-      <TodoForm handleChange={handlechange} />
+      <TodoForm fieldValues={fieldValues} handleChange={handlechange} />
       <hr />
       {JSON.stringify(fieldValues)}
+
+      <button
+        className="bg-purple-500 text-gray-200 cursor-point"
+        onClick={() => clearFieldValues()}
+      >
+        clear
+      </button>
       {/* <input
         type="text"
         value={inputText}

@@ -1,4 +1,4 @@
-function TodoForm({ handleChange }) {
+function TodoForm({ fieldValues, handleChange }) {
   return (
     <div>
       <h2>TodoForm</h2>
@@ -8,9 +8,10 @@ function TodoForm({ handleChange }) {
         className="border-2 border-gray-200"
         onChange={handleChange}
         name="content"
+        value={fieldValues.content}
       />
 
-      <select onChange={handleChange} name="color">
+      <select onChange={handleChange} name="color" value={fieldValues.color}>
         <option>purple</option>
         <option>Orange</option>
         <option>Yellow</option>
