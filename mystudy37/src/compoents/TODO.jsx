@@ -17,10 +17,12 @@ function TODO() {
   };
 
   const appedInputText = (e) => {
-    setTodoList((prevTodoList) => {
-      return [...prevTodoList, { content: inputText }];
-    });
-    setInputText('');
+    if (e.key === 'Enter') {
+      setTodoList((prevTodoList) => {
+        return [...prevTodoList, { content: inputText }];
+      });
+      setInputText('');
+    }
   };
 
   return (
