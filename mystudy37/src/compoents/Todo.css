@@ -1,0 +1,7 @@
+.todo {
+  background-color: aqua;
+}
+
+.todo:hover {
+  background-color: blueviolet;
+}

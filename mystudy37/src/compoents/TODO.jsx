@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import Todo from 'compoents/Todoreturn';
+import './Todo-list.css';
 
 const INITIAL_STATE = [{ content: '파이썬' }, { content: '자바스크립트' }];
 
@@ -26,7 +28,7 @@ function TODO() {
   };
 
   return (
-    <div>
+    <div className="todo-list">
       <h1>TODOLIST</h1>
       <input
         type="text"
@@ -35,7 +37,9 @@ function TODO() {
         onKeyPress={appedInputText}
       />
       {todoList.map((todo, index) => (
-        <div onClick={() => removeTodo(index)}>{todo.content}</div>
+        <Todo todo={todo} onClick={() => removeTodo(index)}>
+          {todo.content}
+        </Todo>
       ))}
     </div>
   );
