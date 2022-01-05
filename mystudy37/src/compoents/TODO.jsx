@@ -29,19 +29,6 @@ function TODO() {
     clearFieldValues();
   };
 
-  // const changedInputText = (e) => {
-  //   setInputText(e.target.value);
-  // };
-
-  // const appedInputText = (e) => {
-  //   if (e.key === 'Enter') {
-  //     setTodoList((prevTodoList) => {
-  //       return [...prevTodoList, { content: inputText }];
-  //     });
-  //     setInputText('');
-  //   }
-  // };
-
   return (
     <div className="todo-list">
       <h1>TODOLIST</h1>
