@@ -1,4 +1,4 @@
-function ReviewForm(fieldValues, handleChange, handleSubmit) {
+function ReviewForm({ fieldValues, handleChange, handleSubmit }) {
   return (
     <div>
       <h3>평점</h3>
@@ -11,12 +11,13 @@ function ReviewForm(fieldValues, handleChange, handleSubmit) {
         <option>5</option>
       </select>
       <h3>리뷰</h3>
-      <input
+      <textarea
         type="text"
         onChange={handleChange}
         name="content"
         value={fieldValues.content}
-      ></input>
+      ></textarea>
+      <hr />
       <button
         onClick={() => {
           handleSubmit();

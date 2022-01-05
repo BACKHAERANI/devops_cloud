@@ -25,7 +25,13 @@ function ReviewList() {
     <div className="Review-list">
       <h1>ReviewList</h1>
       <hr />
-      <ReviewForm handleSubmit={appendReview}>New Review</ReviewForm>
+      <ReviewForm
+        fieldValues={fieldValues}
+        handleSubmit={appendReview}
+        handleChange={handleChange}
+      >
+        New Review
+      </ReviewForm>
       <hr />
       {reviewList.map((review) => (
         <View review={review}>{review.content}</View>
