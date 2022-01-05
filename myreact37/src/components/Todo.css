@@ -1,0 +1,7 @@
+.todo {
+  background-color: rgb(222, 239, 245);
+}
+
+.todo:hover {
+  background-color: lightcoral;
+}
