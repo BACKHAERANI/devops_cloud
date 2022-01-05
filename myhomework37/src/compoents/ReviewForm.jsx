@@ -2,7 +2,7 @@ function ReviewForm({ fieldValues, handleChange, handleSubmit }) {
   return (
     <div>
       <h3>평점</h3>
-      <select onChange={handleChange}>
+      <select onChange={handleChange} name="score">
         <option>0</option>
         <option>1</option>
         <option>2</option>
