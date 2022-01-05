@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import Todo from 'compoents/Todoreturn';
 import './Todo-list.css';
+import TodoForm from './TodoForm';
+import useFieldValues from 'hook/useFieldValues';
 
 const INITIAL_STATE = [{ content: '파이썬' }, { content: '자바스크립트' }];
 
 function TODO() {
   const [todoList, setTodoList] = useState(INITIAL_STATE);
-  const [inputText, setInputText] = useState('');
+  const [fieldValues, handlechange] = useFieldValues();
+
+  // const [inputText, setInputText] = useState('');
 
   const removeTodo = (todoIndex) => {
     setTodoList((prevTodoList) =>
@@ -14,28 +18,31 @@ function TODO() {
     );
   };
 
-  const changedInputText = (e) => {
-    setInputText(e.target.value);
-  };
+  // const changedInputText = (e) => {
+  //   setInputText(e.target.value);
+  // };
 
-  const appedInputText = (e) => {
-    if (e.key === 'Enter') {
-      setTodoList((prevTodoList) => {
-        return [...prevTodoList, { content: inputText }];
-      });
-      setInputText('');
-    }
-  };
+  // const appedInputText = (e) => {
+  //   if (e.key === 'Enter') {
+  //     setTodoList((prevTodoList) => {
+  //       return [...prevTodoList, { content: inputText }];
+  //     });
+  //     setInputText('');
+  //   }
+  // };
 
   return (
     <div className="todo-list">
       <h1>TODOLIST</h1>
-      <input
+      <TodoForm handleChange={handlechange} />
+      <hr />
+      {JSON.stringify(fieldValues)}
+      {/* <input
         type="text"
         value={inputText}
         onChange={changedInputText}
         onKeyPress={appedInputText}
-      />
+      /> */}
       {todoList.map((todo, index) => (
         <Todo todo={todo} onClick={() => removeTodo(index)}>
           {todo.content}
