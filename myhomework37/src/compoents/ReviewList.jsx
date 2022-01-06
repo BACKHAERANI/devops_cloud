@@ -33,6 +33,17 @@ function ReviewList() {
     setForm((prev) => !prev);
   };
 
+  const deleteReview = (deletingReview) => {
+    console.log('Deleting', deletingReview);
+    setReviewList((prevReviewList) =>
+      prevReviewList.filter((id) => deletingReview !== id),
+    );
+  };
+
+  const editReview = (editingReview) => {
+    console.log('Editing', editingReview);
+  };
+
   return (
     <div className="Review-list">
       <h1>ReviewList</h1>
@@ -50,7 +61,14 @@ function ReviewList() {
 
       <hr />
       {reviewList.map((review) => (
-        <View review={review}>{review.content}</View>
+        <View
+          key={review.id}
+          review={review}
+          handleDelete={() => deleteReview(review)}
+          handleEdit={() => editReview(review)}
+        >
+          {review.content}
+        </View>
       ))}
     </div>
   );
