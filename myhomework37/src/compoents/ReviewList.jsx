@@ -24,13 +24,21 @@ function ReviewList() {
     });
 
   const appendReview = () => {
-    // const { id: reviewId } = fieldValues;
-    // if (!reviewId) {
-    // } else {
-    // }
-    const reviewId = new Date().getTime();
-    const review = { ...fieldValues, id: reviewId };
-    setReviewList((prevReviewList) => [...prevReviewList, review]);
+    const { id: reviewId } = fieldValues;
+    if (!reviewId) {
+      reviewId = new Date().getTime();
+      const createdreview = { ...fieldValues, id: reviewId };
+      setReviewList((prevReviewList) => [...prevReviewList, createdreview]);
+    } else {
+      const editedreview = { ...fieldValues };
+      setReviewList((prevReviewList) =>
+        prevReviewList.map((review) => {
+          if (review.id === editedreview.id) return editedreview;
+          return review;
+        }),
+      );
+    }
+
     clearFieldValues();
   };
 
