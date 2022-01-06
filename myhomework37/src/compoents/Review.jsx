@@ -1,3 +1,5 @@
+import Star from 'compoents/Star';
+
 function Review({ review }) {
   return (
     <div
@@ -6,7 +8,8 @@ function Review({ review }) {
     hover:border-green-300 
     hover:cursor-pointer"
     >
-      {review.content}_{review.score}
+      {review.content}
+      <Star />
     </div>
   );
 }

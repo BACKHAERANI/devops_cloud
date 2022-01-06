@@ -36,7 +36,7 @@ function ReviewList() {
           fieldValues={fieldValues}
           handleSubmit={appendReview}
           handleChange={handleChange}
-          handleNew={appendForm}
+          handleForm={appendForm}
         />
       )}
       {!form && <button onClick={appendForm}>New Review</button>}
