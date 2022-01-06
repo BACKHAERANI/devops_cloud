@@ -36,13 +36,14 @@ function ReviewList() {
   const deleteReview = (deletingReview) => {
     console.log('Deleting', deletingReview);
     setReviewList((prevReviewList) =>
-      prevReviewList.filter((id) => deletingReview !== id),
+      prevReviewList.filter((review) => deletingReview.id !== review.id),
     );
   };
 
-  const editReview = (editingReview) => {
-    console.log('Editing', editingReview);
-  };
+  // const editReview = (editingReview) => {
+  //   console.log('Editing', editingReview);
+  //   setReviewList((prevReviewList) => ({ ...prevReviewList, prev }));
+  // };
 
   return (
     <div className="Review-list">
@@ -65,7 +66,7 @@ function ReviewList() {
           key={review.id}
           review={review}
           handleDelete={() => deleteReview(review)}
-          handleEdit={() => editReview(review)}
+          // handleEdit={() => editReview(review)}
         >
           {review.content}
         </View>
