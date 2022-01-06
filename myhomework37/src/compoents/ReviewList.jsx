@@ -17,14 +17,19 @@ const INITIAL_STATE = [
 function ReviewList() {
   const [reviewList, setReviewList] = useState(INITIAL_STATE);
   const [form, setForm] = useState(false);
-  const [fieldValues, handleChange, clearFieldValues] = usefieldValues({
-    content: '',
-    score: 5,
-  });
+  const [fieldValues, handleChange, clearFieldValues, setFieldValues] =
+    usefieldValues({
+      content: '',
+      score: 5,
+    });
 
   const appendReview = () => {
+    // const { id: reviewId } = fieldValues;
+    // if (!reviewId) {
+    // } else {
+    // }
     const reviewId = new Date().getTime();
-    const review = { ...fieldValues, Id: reviewId };
+    const review = { ...fieldValues, id: reviewId };
     setReviewList((prevReviewList) => [...prevReviewList, review]);
     clearFieldValues();
   };
@@ -40,10 +45,11 @@ function ReviewList() {
     );
   };
 
-  // const editReview = (editingReview) => {
-  //   console.log('Editing', editingReview);
-  //   setReviewList((prevReviewList) => ({ ...prevReviewList, prev }));
-  // };
+  const willEditReview = (editingReview) => {
+    console.log('Editing', editingReview);
+    setFieldValues(editingReview);
+    setForm(true);
+  };
 
   return (
     <div className="Review-list">
@@ -66,7 +72,7 @@ function ReviewList() {
           key={review.id}
           review={review}
           handleDelete={() => deleteReview(review)}
-          // handleEdit={() => editReview(review)}
+          handleEdit={() => willEditReview(review)}
         >
           {review.content}
         </View>
