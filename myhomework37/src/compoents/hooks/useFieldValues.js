@@ -13,7 +13,7 @@ function useFieldValues(initialFieldValues) {
 
   const clearFieldvalues = () => setFieldValues(initialFieldValues);
 
-  return [fieldValues, handleChange, clearFieldvalues];
+  return [fieldValues, handleChange, clearFieldvalues, setFieldValues];
 }
 
 export default useFieldValues;
