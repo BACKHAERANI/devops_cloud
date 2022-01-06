@@ -24,7 +24,7 @@ function ReviewList() {
     });
 
   const appendReview = () => {
-    const { id: reviewId } = fieldValues;
+    let { id: reviewId } = fieldValues;
     if (!reviewId) {
       reviewId = new Date().getTime();
       const createdreview = { ...fieldValues, id: reviewId };
@@ -38,7 +38,6 @@ function ReviewList() {
         }),
       );
     }
-
     clearFieldValues();
   };
 
