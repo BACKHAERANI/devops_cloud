@@ -11,7 +11,7 @@ const Basic_Review = [
 
 function ReviewList() {
   const [reviewList, setReviewList] = useState(Basic_Review);
-  const [form, setForm] = useState();
+  const [form, setForm] = useState(false);
   const [fieldValues, handleChange, clearFieldValues] = usefieldValues({
     content: '',
   });
@@ -22,7 +22,9 @@ function ReviewList() {
     clearFieldValues();
   };
 
-  const appendForm = () => {};
+  const appendForm = () => {
+    setForm((prev) => !prev);
+  };
 
   return (
     <div className="Review-list">
@@ -34,6 +36,7 @@ function ReviewList() {
           fieldValues={fieldValues}
           handleSubmit={appendReview}
           handleChange={handleChange}
+          handleNew={appendForm}
         />
       )}
       {!form && <button onClick={appendForm}>New Review</button>}

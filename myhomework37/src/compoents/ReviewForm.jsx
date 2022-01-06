@@ -1,4 +1,4 @@
-function ReviewForm({ fieldValues, handleChange, handleSubmit }) {
+function ReviewForm({ fieldValues, handleChange, handleSubmit, handleNew }) {
   return (
     <div>
       <h3>평점</h3>
@@ -21,6 +21,7 @@ function ReviewForm({ fieldValues, handleChange, handleSubmit }) {
       <button
         onClick={() => {
           handleSubmit();
+          handleNew();
         }}
       >
         저장하기
