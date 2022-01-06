@@ -9,7 +9,7 @@ function Review({ review }) {
     hover:cursor-pointer"
     >
       {review.content}
-      <Star />
+      <Star score={review.score} />
     </div>
   );
 }
